@@ -38,8 +38,45 @@ struct my_profile_View: View {
                     .cornerRadius(200)
                     .overlay(
                         RoundedRectangle(cornerRadius: 75).stroke(Color.black, lineWidth: 4))
-                Text("\(my_name)").font(.system(size: 40)).fontWeight(.black)
+                Text("\(my_name)").font(.system(size: 35)).fontWeight(.black)
                 Spacer()
+                Text("_____________________________").font(.title2).fontWeight(.black)
+                HStack{
+                    VStack{
+                        Text("自分が無くしたり\n忘れた物").font(.title2).fontWeight(.black)
+                        List{
+                            Text("カバン")
+                            Text("財布")
+                        }
+                    }
+                    VStack{
+                        Text("自分の\nプロフィール\n変更").font(.title).fontWeight(.black)
+                        //な目を変更
+                        Button(action: {
+                            
+                        }) {
+                            Text("名前を変更")
+                        }
+                        .padding()
+                        .accentColor(Color.white)
+                        .background(Color.blue)
+                        .cornerRadius(26)
+                        .shadow(radius: 20)
+                        .frame(width: 160, height: 100)
+                        //アイコン変更
+                        Button(action: {
+                            
+                        }) {
+                            Text("アイコンを変更")
+                        }
+                        .padding()
+                        .accentColor(Color.white)
+                        .background(Color.blue)
+                        .cornerRadius(26)
+                        .shadow(radius: 20)
+                        .frame(width: 160, height: 100)
+                    }
+                }
             }
         }.navigationBarBackButtonHidden(true)
     }
