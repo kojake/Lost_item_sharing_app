@@ -8,34 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
+    //画面遷移
+    @State private var showShould_my_profile_View = false
+    //自分の名前
     @State var my_name = "hoge"
     
     var body: some View {
-        VStack {
-            HStack{
-                Text("忘れ物共有\n").font(.system(size: 35)).fontWeight(.black)
-                Spacer()
-                Button(action: {
-                    
-                }){
-                    Text("\(my_name)").font(.largeTitle).foregroundColor(Color.black)
-                    Image("")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 80, height: 80)
-                        .cornerRadius(75)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 75).stroke(Color.black, lineWidth: 4))
-                }
-            }
-            Spacer()
-            HStack{
-                Text("タイムライン").font(.title).fontWeight(.black)
-                Image(systemName: "clock.fill").resizable().scaledToFit().frame(width: 40,height: 40).foregroundColor(Color.green)
-            }
-            List{
-                VStack{
-                    HStack{
+        NavigationView{
+            VStack {
+                NavigationLink(destination: my_profile_View(my_name: $my_name), isActive: $showShould_my_profile_View){
+                    EmptyView()
+                }.navigationBarBackButtonHidden(true)
+                HStack{
+                    Text("忘れ物共有\n").font(.system(size: 35)).fontWeight(.black)
+                    Spacer()
+                    Button(action: {
+                        showShould_my_profile_View = true
+                    }){
+                        Text("\(my_name)").font(.largeTitle).foregroundColor(Color.black)
                         Image("")
                             .resizable()
                             .scaledToFill()
@@ -43,20 +33,38 @@ struct ContentView: View {
                             .cornerRadius(75)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 75).stroke(Color.black, lineWidth: 4))
-                        VStack{
-                            HStack{
-                                Text("\(my_name)").font(.title).fontWeight(.black)
-                                Text("さんからの\n忘れ物共有").fontWeight(.black).font(.title3)
+                    }
+                }
+                Spacer()
+                HStack{
+                    Text("タイムライン").font(.title).fontWeight(.black)
+                    Image(systemName: "clock.fill").resizable().scaledToFit().frame(width: 40,height: 40).foregroundColor(Color.green)
+                }
+                List{
+                    VStack{
+                        HStack{
+                            Image("")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 80, height: 80)
+                                .cornerRadius(75)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 75).stroke(Color.black, lineWidth: 4))
+                            VStack{
+                                HStack{
+                                    Text("\(my_name)").font(.title).fontWeight(.black)
+                                    Text("さんからの\n忘れ物共有").fontWeight(.black).font(.title3)
+                                }
+                                Spacer()
+                                Button(action: {
+                                    
+                                }) {
+                                    Text("確認する")
+                                }
+                                .buttonStyle(ArrowButtonStyle())
                             }
-                            Spacer()
-                            Button(action: {
-                                
-                            }) {
-                                Text("確認する")
-                            }
-                            .buttonStyle(ArrowButtonStyle())
+                            
                         }
-                        
                     }
                 }
             }

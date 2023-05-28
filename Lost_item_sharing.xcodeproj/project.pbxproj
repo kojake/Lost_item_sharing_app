@@ -11,6 +11,7 @@
 		97B6D4DC2A239D6100DB4196 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B6D4DB2A239D6100DB4196 /* ContentView.swift */; };
 		97B6D4DE2A239D6200DB4196 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97B6D4DD2A239D6200DB4196 /* Assets.xcassets */; };
 		97B6D4E12A239D6200DB4196 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97B6D4E02A239D6200DB4196 /* Preview Assets.xcassets */; };
+		97B6D4E82A23A3CC00DB4196 /* my_profile_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B6D4E72A23A3CC00DB4196 /* my_profile_View.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		97B6D4DB2A239D6100DB4196 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		97B6D4DD2A239D6200DB4196 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97B6D4E02A239D6200DB4196 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		97B6D4E72A23A3CC00DB4196 /* my_profile_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = my_profile_View.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				97B6D4D92A239D6100DB4196 /* Lost_item_sharingApp.swift */,
 				97B6D4DB2A239D6100DB4196 /* ContentView.swift */,
+				97B6D4E72A23A3CC00DB4196 /* my_profile_View.swift */,
 				97B6D4DD2A239D6200DB4196 /* Assets.xcassets */,
 				97B6D4DF2A239D6200DB4196 /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97B6D4E82A23A3CC00DB4196 /* my_profile_View.swift in Sources */,
 				97B6D4DC2A239D6100DB4196 /* ContentView.swift in Sources */,
 				97B6D4DA2A239D6100DB4196 /* Lost_item_sharingApp.swift in Sources */,
 			);
