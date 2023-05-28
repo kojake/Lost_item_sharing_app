@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    //画面遷移
+    //画面遷移用
     @State private var showShould_my_profile_View = false
     //自分の名前
     @State var my_name = "hoge"
