@@ -54,7 +54,9 @@ struct my_profile_View: View {
                         VStack{
                             Text("自分が無くしたり\n忘れた物").font(.title2).fontWeight(.black)
                             List{
-
+                                ForEach(0..<lost_item_list.count, id: \.self){index in
+                                    Text(lost_item_list[index]).font(.title2).fontWeight(.black)
+                                }
                             }
                         }
                         VStack{
@@ -62,7 +64,7 @@ struct my_profile_View: View {
                             HStack{
                                 Spacer()
                                 Button(action: {
-                                    print("Button")
+                                    add_lost_item_list_alert = true
                                 }) {
                                     Image(systemName: "plus")
                                         .resizable()
@@ -107,11 +109,20 @@ struct my_profile_View: View {
             }
         }.navigationBarBackButtonHidden(true)
             .alert("名前を変更", isPresented: $name_change_alert, actions: {
-                TextField("Username", text: $userInput)
+                TextField("タップして入力", text: $userInput)
                 Button("変える", action: {
                     my_name = userInput
                 })
-                Button("Cancel", role: .cancel, action: {})
+                Button("キャンセル", role: .cancel, action: {})
+            }, message: {
+                Text("名前を変更するならタップして入力をして下さい")
+            })
+            .alert("忘れ物や無くしたものをリストに増やす", isPresented: $add_lost_item_list_alert, actions: {
+                TextField("タップして入力", text: $userInput)
+                Button("増やす", action: {
+                    lost_item_list.append(userInput)
+                })
+                Button("キャンセル", role: .cancel, action: {})
             }, message: {
                 Text("名前を変更するならタップして入力をして下さい")
             })
