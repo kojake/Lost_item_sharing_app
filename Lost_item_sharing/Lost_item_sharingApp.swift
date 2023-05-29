@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-var real_time_posting = ["":""]
+var post_name = [""]
+var post_content = [""]
+var post_photo = [""]
 
 @main
 struct Lost_item_sharingApp: App {
