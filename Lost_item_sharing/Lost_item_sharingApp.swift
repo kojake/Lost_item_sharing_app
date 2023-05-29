@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+var real_time_posting = ["":""]
+
 @main
 struct Lost_item_sharingApp: App {
     var body: some Scene {
