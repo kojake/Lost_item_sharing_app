@@ -13,7 +13,6 @@ struct ContentView: View {
     //自分の名前
     @State var my_name_main = ""
     
-    
     var body: some View {
         NavigationView{
             VStack {
@@ -41,28 +40,48 @@ struct ContentView: View {
                     Text("タイムライン").font(.title).fontWeight(.black)
                     Image(systemName: "clock.fill").resizable().scaledToFit().frame(width: 40,height: 40).foregroundColor(Color.green)
                 }
-                List{
+                ZStack{
+                    List{
+                        VStack{
+                            HStack{
+                                Image("")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 80, height: 80)
+                                    .cornerRadius(75)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 75).stroke(Color.black, lineWidth: 4))
+                                VStack{
+                                    HStack{
+                                        Text("hoge").font(.title).fontWeight(.black)
+                                        Text("さんからの\n忘れ物共有").fontWeight(.black).font(.title3)
+                                    }
+                                    Spacer()
+                                    Button(action: {
+                                        
+                                    }) {
+                                        Text("確認する")
+                                    }
+                                    .buttonStyle(ArrowButtonStyle())
+                                }
+                            }
+                        }
+                    }
                     VStack{
+                        Spacer()
                         HStack{
-                            Image("")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 80, height: 80)
-                                .cornerRadius(75)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 75).stroke(Color.black, lineWidth: 4))
-                            VStack{
-                                HStack{
-                                    Text("hoge").font(.title).fontWeight(.black)
-                                    Text("さんからの\n忘れ物共有").fontWeight(.black).font(.title3)
-                                }
-                                Spacer()
-                                Button(action: {
-                                    
-                                }) {
-                                    Text("確認する")
-                                }
-                                .buttonStyle(ArrowButtonStyle())
+                            Spacer()
+                            Button(action: {
+                                
+                            }) {
+                                Text("投稿する")
+                                    .font(.title2)
+                                    .fontWeight(.black)
+                                    .padding()
+                                    .frame(width: 150, height: 70)
+                                    .foregroundColor(Color.white)
+                                    .background(Color.blue)
+                                    .cornerRadius(25)
                             }
                         }
                     }
