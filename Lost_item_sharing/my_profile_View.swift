@@ -54,7 +54,7 @@ struct my_profile_View: View {
                         Text("自分の\nプロフィール\n変更").font(.title).fontWeight(.black)
                         //な目を変更
                         Button(action: {
-                            
+                            name_change_alert = true
                         }) {
                             Text("名前を変更")
                         }
@@ -80,16 +80,16 @@ struct my_profile_View: View {
                 }
             }
         }.navigationBarBackButtonHidden(true)
+        .alert(isPresented: $name_change_alert, content: {
+                    Alert(
+                        title: Text("名前の変更"),
+                        message: nil,
+                        primaryButton: .default(Text("OK"), action: {
+                            // Handle OK button action here
+                            print("タップして入力: \(userInput)")
+                        }),
+                        secondaryButton: .cancel()
+                    )
+                })
     }
-    .alert(isPresented: $name_change_alert, content: {
-                Alert(
-                    title: Text("Enter Text"),
-                    message: nil,
-                    primaryButton: .default(Text("OK"), action: {
-                        // Handle OK button action here
-                        print("Entered text: \(userInput)")
-                    }),
-                    secondaryButton: .cancel()
-                )
-            })
 }
