@@ -13,6 +13,7 @@ struct ContentView: View {
     //自分の名前
     @State var my_name_main = ""
     
+    
     var body: some View {
         NavigationView{
             VStack {

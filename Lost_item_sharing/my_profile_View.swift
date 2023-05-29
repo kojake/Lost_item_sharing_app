@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct my_profile_View: View {
     //画面を閉じる
@@ -20,6 +21,10 @@ struct my_profile_View: View {
     @Binding var my_name: String
     //忘れ物や無くしたもの
     @State var lost_item_list = ["バッグ"]
+    //アイコン変更
+    //写真選択画面を開く
+    @State private var image: UIImage? = nil
+    @State private var showingImagePicker = false
     
     var body: some View {
         NavigationView{
@@ -94,7 +99,7 @@ struct my_profile_View: View {
                         .frame(width: 160, height: 100)
                         //アイコン変更
                         Button(action: {
-                            
+                            showingImagePicker.toggle()
                         }) {
                             Text("アイコンを変更")
                         }
@@ -130,5 +135,38 @@ struct my_profile_View: View {
     // 行削除処理
     func rowRemove(offsets: IndexSet) {
         lost_item_list.remove(atOffsets: offsets)
+    }
+}
+
+struct PhotoModal: UIViewControllerRepresentable {
+    @Binding var image: UIImage?
+    @Environment(\.presentationMode) var presentationMode
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+    
+    func makeUIViewController(context: Context) -> UIImagePickerController {
+        let picker = UIImagePickerController()
+        picker.delegate = context.coordinator
+        return picker
+    }
+    
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
+    
+    class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+        let parent: PhotoModal
+        
+        init(_ parent: PhotoModal) {
+            self.parent = parent
+        }
+        
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            if let uiImage = info[.originalImage] as? UIImage {
+                parent.image = uiImage
+            }
+            
+            parent.presentationMode.wrappedValue.dismiss()
+        }
     }
 }
