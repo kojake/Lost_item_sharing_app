@@ -10,11 +10,13 @@ import SwiftUI
 struct ContentView: View {
     //画面遷移用
     @State private var showShould_my_profile_View = false
+    //自分の名前
+    @State var my_name_main = ""
     
     var body: some View {
         NavigationView{
             VStack {
-                NavigationLink(destination: my_profile_View(), isActive: $showShould_my_profile_View){
+                NavigationLink(destination: my_profile_View(my_name: $my_name_main), isActive: $showShould_my_profile_View){
                     EmptyView()
                 }.navigationBarBackButtonHidden(true)
                 HStack{
@@ -23,7 +25,7 @@ struct ContentView: View {
                     Button(action: {
                         showShould_my_profile_View = true
                     }){
-                        Text("\(my_name)").font(.largeTitle).foregroundColor(Color.black)
+                        Text("\(my_name_main)").font(.largeTitle).foregroundColor(Color.black)
                         Image("")
                             .resizable()
                             .scaledToFill()
@@ -50,7 +52,7 @@ struct ContentView: View {
                                     RoundedRectangle(cornerRadius: 75).stroke(Color.black, lineWidth: 4))
                             VStack{
                                 HStack{
-                                    Text("\(my_name)").font(.title).fontWeight(.black)
+                                    Text("\(my_name_main)").font(.title).fontWeight(.black)
                                     Text("さんからの\n忘れ物共有").fontWeight(.black).font(.title3)
                                 }
                                 Spacer()

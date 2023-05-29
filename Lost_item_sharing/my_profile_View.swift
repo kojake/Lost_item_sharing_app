@@ -13,6 +13,7 @@ struct my_profile_View: View {
     //名前変更アラート
     @State private var name_change_alert = false
     @State private var userInput = ""
+    @Binding var my_name: String
     
     var body: some View {
         NavigationView{
@@ -51,18 +52,22 @@ struct my_profile_View: View {
                                 Text("財布")
                             }
                         }
-                        Spacer()
                         VStack{
-                            Button(action: {
-                                print("Button")
-                            }) {
-                                Image(systemName: "plus")
-                                    .padding()
-                                    .frame(width: 100, height: 100)
-                                    .imageScale(.large)
-                                    .foregroundColor(Color.white)
-                                    .background(Color.green)
-                                    .clipShape(Circle())
+                            Spacer()
+                            HStack{
+                                Spacer()
+                                Button(action: {
+                                    print("Button")
+                                }) {
+                                    Image(systemName: "plus")
+                                        .resizable()
+                                        .padding()
+                                        .frame(width: 50, height: 50)
+                                        .imageScale(.large)
+                                        .foregroundColor(Color.white)
+                                        .background(Color.green)
+                                        .clipShape(Circle())
+                                }
                             }
                         }
                     }
@@ -98,8 +103,9 @@ struct my_profile_View: View {
         }.navigationBarBackButtonHidden(true)
             .alert("名前を変更", isPresented: $name_change_alert, actions: {
                 TextField("Username", text: $userInput)
-                
-                Button("変える", action: {})
+                Button("変える", action: {
+                    my_name = userInput
+                })
                 Button("Cancel", role: .cancel, action: {})
             }, message: {
                 Text("名前を変更するならタップして入力をして下さい")
