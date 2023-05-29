@@ -52,7 +52,7 @@ struct ContentView: View {
                                     RoundedRectangle(cornerRadius: 75).stroke(Color.black, lineWidth: 4))
                             VStack{
                                 HStack{
-                                    Text("\(my_name_main)").font(.title).fontWeight(.black)
+                                    Text("hoge").font(.title).fontWeight(.black)
                                     Text("さんからの\n忘れ物共有").fontWeight(.black).font(.title3)
                                 }
                                 Spacer()

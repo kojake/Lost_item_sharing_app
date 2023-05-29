@@ -12,8 +12,14 @@ struct my_profile_View: View {
     @Environment(\.dismiss) var dismiss
     //名前変更アラート
     @State private var name_change_alert = false
+    //忘れ物リストに増やすアラート
+    @State private var add_lost_item_list_alert = false
+    //アラート入力取得
     @State private var userInput = ""
+    //読み込み
     @Binding var my_name: String
+    //忘れ物や無くしたもの
+    @State var lost_item_list = ["バッグ"]
     
     var body: some View {
         NavigationView{
@@ -48,8 +54,7 @@ struct my_profile_View: View {
                         VStack{
                             Text("自分が無くしたり\n忘れた物").font(.title2).fontWeight(.black)
                             List{
-                                Text("カバン")
-                                Text("財布")
+
                             }
                         }
                         VStack{
