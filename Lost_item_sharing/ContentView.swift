@@ -26,9 +26,6 @@ struct ContentView: View {
                 NavigationLink(destination: post_VIew(), isActive: $showShould_post_View){
                     EmptyView()
                 }.navigationBarBackButtonHidden(true)
-                NavigationLink(destination: content_View(select_list: $select_list), isActive: $showShould_post_View){
-                    EmptyView()
-                }.navigationBarBackButtonHidden(true)
                 HStack{
                     Text("忘れ物共有\n").font(.system(size: 35)).fontWeight(.black)
                     Spacer()
@@ -54,26 +51,22 @@ struct ContentView: View {
                     List{
                         ForEach(0..<post_name.count, id: \.self){index in
                             VStack{
-                                HStack{
-                                    Image("")
-                                        .resizable()
-                                        .scaledToFill()
-                                        .frame(width: 80, height: 80)
-                                        .cornerRadius(75)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 75).stroke(Color.black, lineWidth: 4))
-                                    VStack{
-                                        HStack{
-                                            Text("\(post_name[index])").font(.title).fontWeight(.black)
-                                            Text("さんからの\n忘れ物共有").fontWeight(.black).font(.title3)
+                                NavigationLink(destination: content_View(select_list: $select_list)) {
+                                    HStack{
+                                        Image("")
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: 80, height: 80)
+                                            .cornerRadius(75)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 75).stroke(Color.black, lineWidth: 4))
+                                        VStack{
+                                            HStack{
+                                                Text("\(post_name[index])").font(.title).fontWeight(.black)
+                                                Text("さんからの\n忘れ物共有").fontWeight(.black).font(.title3)
+                                            }
+                                            Spacer()
                                         }
-                                        Spacer()
-                                        Button(action: {
-                                            
-                                        }) {
-                                            Text("確認する")
-                                        }
-                                        .buttonStyle(ArrowButtonStyle())
                                     }
                                 }
                             }
@@ -100,39 +93,6 @@ struct ContentView: View {
                 }
             }
         }
-    }
-}
-
-//buttondesign
-struct ArrowButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .font(.system(size: 28, weight:.bold, design: .rounded))
-            .foregroundColor(.white)
-            .padding(.horizontal,50)
-            .padding(5)
-            .background(
-                ArrowShape()
-                    .fill(LinearGradient(
-                        gradient: Gradient(colors: [Color.green, Color.blue.opacity(0.4)]),
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing)))
-            .shadow(color:.black, radius: configuration.isPressed ? 2 : 4)
-            .scaleEffect(configuration.isPressed ? 0.9 : 1.0)
-    }
-}
-struct ArrowShape: Shape {
-    func path(in rect: CGRect) -> Path {
-        let xOffset = rect.size.width * 0.07
-        var path = Path()
-        path.move(to: CGPoint(x: 0, y: 0))
-        path.addLine(to: CGPoint(x: rect.size.width - xOffset, y: 0))
-        path.addLine(to: CGPoint(x: rect.size.width, y: rect.size.height / 2))
-        path.addLine(to: CGPoint(x: rect.size.width - xOffset, y: rect.size.height))
-        path.addLine(to: CGPoint(x: 0, y: rect.size.height))
-        path.addLine(to: CGPoint(x: xOffset, y: rect.size.height / 2))
-        path.closeSubpath()
-        return path
     }
 }
 
