@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+//自分の名前
+var my_name = "hoge"
+
 @main
 struct Lost_item_sharingApp: App {
     var body: some Scene {

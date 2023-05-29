@@ -10,8 +10,9 @@ import SwiftUI
 struct my_profile_View: View {
     //画面を閉じる
     @Environment(\.dismiss) var dismiss
-    
-    @Binding var my_name: String
+    //名前変更アラート
+    @State private var name_change_alert = false
+    @State private var userInput = ""
     
     var body: some View {
         NavigationView{
@@ -80,4 +81,15 @@ struct my_profile_View: View {
             }
         }.navigationBarBackButtonHidden(true)
     }
+    .alert(isPresented: $name_change_alert, content: {
+                Alert(
+                    title: Text("Enter Text"),
+                    message: nil,
+                    primaryButton: .default(Text("OK"), action: {
+                        // Handle OK button action here
+                        print("Entered text: \(userInput)")
+                    }),
+                    secondaryButton: .cancel()
+                )
+            })
 }

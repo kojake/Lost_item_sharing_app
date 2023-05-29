@@ -10,13 +10,11 @@ import SwiftUI
 struct ContentView: View {
     //画面遷移用
     @State private var showShould_my_profile_View = false
-    //自分の名前
-    @State var my_name = "hoge"
     
     var body: some View {
         NavigationView{
             VStack {
-                NavigationLink(destination: my_profile_View(my_name: $my_name), isActive: $showShould_my_profile_View){
+                NavigationLink(destination: my_profile_View(), isActive: $showShould_my_profile_View){
                     EmptyView()
                 }.navigationBarBackButtonHidden(true)
                 HStack{
