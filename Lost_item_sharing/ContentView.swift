@@ -63,6 +63,9 @@ struct ContentView: View {
                                         VStack{
                                             HStack{
                                                 Text("\(post_name[index])").font(.title).fontWeight(.black)
+                                                    .onTapGesture {
+                                                         select_list = index
+                                                     }
                                                 Text("さんからの\n忘れ物共有").fontWeight(.black).font(.title3)
                                             }
                                             Spacer()

@@ -12,7 +12,13 @@ struct content_View: View {
     
     var body: some View {
         VStack{
-            
+            Text("\(post_title[select_list])").font(.system(size: 50)).fontWeight(.black)
+            VStack{
+                Text("\(post_content[select_list])").font(.system(size: 20)).fontWeight(.black)
+            }
+            .frame(width: 350, height: 400)
+            .padding()
+            .border(Color.gray, width: 1)
         }
     }
 }
