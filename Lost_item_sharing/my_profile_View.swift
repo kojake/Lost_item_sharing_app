@@ -96,16 +96,13 @@ struct my_profile_View: View {
                 }
             }
         }.navigationBarBackButtonHidden(true)
-        .alert(isPresented: $name_change_alert, content: {
-                    Alert(
-                        title: Text("名前の変更"),
-                        message: nil,
-                        primaryButton: .default(Text("OK"), action: {
-                            // Handle OK button action here
-                            print("タップして入力: \(userInput)")
-                        }),
-                        secondaryButton: .cancel()
-                    )
-                })
+            .alert("名前を変更", isPresented: $name_change_alert, actions: {
+                TextField("Username", text: $userInput)
+                
+                Button("変える", action: {})
+                Button("Cancel", role: .cancel, action: {})
+            }, message: {
+                Text("名前を変更するならタップして入力をして下さい")
+            })
     }
 }
