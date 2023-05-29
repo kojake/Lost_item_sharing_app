@@ -32,18 +32,29 @@ struct post_VIew: View {
                 }
                 if selectedIndex == 0{
                     VStack{
-                        TextField("タップしてタイトルを入力", text: $title).frame(width: UIScreen.main.bounds.size.width - 80, height: 41, alignment: .center)
-                            .textFieldStyle(.plain)
-                            .background(Color.init(red: 211.0/255.0, green: 211.0/255.0, blue: 211.0/255.0))
-                            .textContentType(.emailAddress)
-                            .cornerRadius(10)
-                            .multilineTextAlignment(.center)
-                            .padding(.top, 15)
-                            .padding(.bottom, 10)
-                            .foregroundColor(.black)
-                            .fontWeight(.black)
+                        HStack{
+                            Button(action: {
+                                dismiss()
+                            }) {
+                                Text("戻る")
+                            }
+                            .padding()
+                            .accentColor(Color.white)
+                            .background(Color.blue)
+                            .cornerRadius(26)
+                            TextField("タップしてタイトルを入力", text: $title).frame(width: UIScreen.main.bounds.size.width - 80, height: 41, alignment: .center)
+                                .textFieldStyle(.plain)
+                                .background(Color.init(red: 211.0/255.0, green: 211.0/255.0, blue: 211.0/255.0))
+                                .textContentType(.emailAddress)
+                                .cornerRadius(10)
+                                .multilineTextAlignment(.center)
+                                .padding(.top, 15)
+                                .padding(.bottom, 10)
+                                .foregroundColor(.black)
+                                .fontWeight(.black)
+                        }
                         TextEditor(text: $content)
-                            .frame(height: 400)
+                            .frame(height: 350)
                             .padding()
                             .border(Color.gray, width: 1)
                         Spacer()
@@ -120,7 +131,7 @@ struct post_VIew: View {
                     }
                 }
             }
-        }
+        }.navigationBarBackButtonHidden(true)
     }
 }
 

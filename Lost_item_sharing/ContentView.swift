@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     //画面遷移用
     @State private var showShould_my_profile_View = false
+    @State private var showShould_post_View = false
     //自分の名前
     @State var my_name_main = ""
     
@@ -17,6 +18,9 @@ struct ContentView: View {
         NavigationView{
             VStack {
                 NavigationLink(destination: my_profile_View(my_name: $my_name_main), isActive: $showShould_my_profile_View){
+                    EmptyView()
+                }.navigationBarBackButtonHidden(true)
+                NavigationLink(destination: post_VIew(), isActive: $showShould_post_View){
                     EmptyView()
                 }.navigationBarBackButtonHidden(true)
                 HStack{
@@ -72,7 +76,7 @@ struct ContentView: View {
                         HStack{
                             Spacer()
                             Button(action: {
-                                
+                                showShould_post_View = true
                             }) {
                                 Text("投稿する")
                                     .font(.title2)
