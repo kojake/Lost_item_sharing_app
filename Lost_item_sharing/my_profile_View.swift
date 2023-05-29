@@ -56,7 +56,7 @@ struct my_profile_View: View {
                             List{
                                 ForEach(0..<lost_item_list.count, id: \.self){index in
                                     Text(lost_item_list[index]).font(.title2).fontWeight(.black)
-                                }
+                                }.onDelete(perform: rowRemove)
                             }
                         }
                         VStack{
@@ -126,5 +126,9 @@ struct my_profile_View: View {
             }, message: {
                 Text("名前を変更するならタップして入力をして下さい")
             })
+    }
+    // 行削除処理
+    func rowRemove(offsets: IndexSet) {
+        lost_item_list.remove(atOffsets: offsets)
     }
 }
