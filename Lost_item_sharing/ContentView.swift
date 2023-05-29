@@ -11,8 +11,11 @@ struct ContentView: View {
     //画面遷移用
     @State private var showShould_my_profile_View = false
     @State private var showShould_post_View = false
+    @State private var showShould_content_View = false
     //自分の名前
     @State var my_name_main = ""
+    //リスト選択
+    @State var select_list = 0
     
     var body: some View {
         NavigationView{
@@ -21,6 +24,9 @@ struct ContentView: View {
                     EmptyView()
                 }.navigationBarBackButtonHidden(true)
                 NavigationLink(destination: post_VIew(), isActive: $showShould_post_View){
+                    EmptyView()
+                }.navigationBarBackButtonHidden(true)
+                NavigationLink(destination: content_View(select_list: $select_list), isActive: $showShould_post_View){
                     EmptyView()
                 }.navigationBarBackButtonHidden(true)
                 HStack{
@@ -46,27 +52,29 @@ struct ContentView: View {
                 }
                 ZStack{
                     List{
-                        VStack{
-                            HStack{
-                                Image("")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 80, height: 80)
-                                    .cornerRadius(75)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 75).stroke(Color.black, lineWidth: 4))
-                                VStack{
-                                    HStack{
-                                        Text("hoge").font(.title).fontWeight(.black)
-                                        Text("さんからの\n忘れ物共有").fontWeight(.black).font(.title3)
+                        ForEach(0..<post_name.count, id: \.self){index in
+                            VStack{
+                                HStack{
+                                    Image("")
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 80, height: 80)
+                                        .cornerRadius(75)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 75).stroke(Color.black, lineWidth: 4))
+                                    VStack{
+                                        HStack{
+                                            Text("\(post_name[index])").font(.title).fontWeight(.black)
+                                            Text("さんからの\n忘れ物共有").fontWeight(.black).font(.title3)
+                                        }
+                                        Spacer()
+                                        Button(action: {
+                                            
+                                        }) {
+                                            Text("確認する")
+                                        }
+                                        .buttonStyle(ArrowButtonStyle())
                                     }
-                                    Spacer()
-                                    Button(action: {
-                                        
-                                    }) {
-                                        Text("確認する")
-                                    }
-                                    .buttonStyle(ArrowButtonStyle())
                                 }
                             }
                         }

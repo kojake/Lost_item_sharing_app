@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9707CD6E2A24836100BD5947 /* post_VIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9707CD6D2A24836100BD5947 /* post_VIew.swift */; };
+		974DC7152A24D1D300B22979 /* content_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974DC7142A24D1D300B22979 /* content_View.swift */; };
 		97B6D4DA2A239D6100DB4196 /* Lost_item_sharingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B6D4D92A239D6100DB4196 /* Lost_item_sharingApp.swift */; };
 		97B6D4DC2A239D6100DB4196 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B6D4DB2A239D6100DB4196 /* ContentView.swift */; };
 		97B6D4DE2A239D6200DB4196 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97B6D4DD2A239D6200DB4196 /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		9707CD6D2A24836100BD5947 /* post_VIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = post_VIew.swift; sourceTree = "<group>"; };
+		974DC7142A24D1D300B22979 /* content_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = content_View.swift; sourceTree = "<group>"; };
 		97B6D4D62A239D6100DB4196 /* Lost_item_sharing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lost_item_sharing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97B6D4D92A239D6100DB4196 /* Lost_item_sharingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lost_item_sharingApp.swift; sourceTree = "<group>"; };
 		97B6D4DB2A239D6100DB4196 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 				9707CD6D2A24836100BD5947 /* post_VIew.swift */,
 				97B6D4D92A239D6100DB4196 /* Lost_item_sharingApp.swift */,
 				97B6D4DB2A239D6100DB4196 /* ContentView.swift */,
+				974DC7142A24D1D300B22979 /* content_View.swift */,
 				97B6D4E72A23A3CC00DB4196 /* my_profile_View.swift */,
 				97B6D4DD2A239D6200DB4196 /* Assets.xcassets */,
 				97B6D4DF2A239D6200DB4196 /* Preview Content */,
@@ -147,6 +150,7 @@
 				97B6D4DC2A239D6100DB4196 /* ContentView.swift in Sources */,
 				9707CD6E2A24836100BD5947 /* post_VIew.swift in Sources */,
 				97B6D4DA2A239D6100DB4196 /* Lost_item_sharingApp.swift in Sources */,
+				974DC7152A24D1D300B22979 /* content_View.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

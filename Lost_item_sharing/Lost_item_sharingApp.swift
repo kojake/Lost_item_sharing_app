@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-var post_name = [""]
+var post_name = ["hoge1","hoge2"]
 var post_content = [""]
 var post_photo = [""]
 
