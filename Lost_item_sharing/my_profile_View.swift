@@ -43,11 +43,27 @@ struct my_profile_View: View {
                 Spacer()
                 Text("_____________________________").font(.title2).fontWeight(.black)
                 HStack{
-                    VStack{
-                        Text("自分が無くしたり\n忘れた物").font(.title2).fontWeight(.black)
-                        List{
-                            Text("カバン")
-                            Text("財布")
+                    ZStack{
+                        VStack{
+                            Text("自分が無くしたり\n忘れた物").font(.title2).fontWeight(.black)
+                            List{
+                                Text("カバン")
+                                Text("財布")
+                            }
+                        }
+                        Spacer()
+                        VStack{
+                            Button(action: {
+                                print("Button")
+                            }) {
+                                Image(systemName: "plus")
+                                    .padding()
+                                    .frame(width: 100, height: 100)
+                                    .imageScale(.large)
+                                    .foregroundColor(Color.white)
+                                    .background(Color.green)
+                                    .clipShape(Circle())
+                            }
                         }
                     }
                     VStack{
