@@ -49,7 +49,7 @@ struct ContentView: View {
                 }
                 ZStack{
                     List{
-                        ForEach(0..<post_name_main.count, id: \.self){index in
+                        ForEach((0..<post_name.count).reversed(), id: \.self){index in
                             VStack{
                                 NavigationLink(destination: content_View(select_list: Binding<String>(
                                     get: { post_name[index] },
