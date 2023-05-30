@@ -14,8 +14,6 @@ struct ContentView: View {
     @State private var showShould_content_View = false
     //自分の名前
     @State var my_name_main = ""
-    //リスト選択
-    @State var select_list = 0
     
     var body: some View {
         NavigationView{
@@ -51,7 +49,10 @@ struct ContentView: View {
                     List{
                         ForEach(0..<post_name.count, id: \.self){index in
                             VStack{
-                                NavigationLink(destination: content_View(select_list: $select_list)) {
+                                NavigationLink(destination: content_View(select_list: Binding<String>(
+                                    get: { post_name[index] },
+                                    set: { post_name[index] = $0 }
+                                ))){
                                     HStack{
                                         Image("")
                                             .resizable()
@@ -63,9 +64,6 @@ struct ContentView: View {
                                         VStack{
                                             HStack{
                                                 Text("\(post_name[index])").font(.title).fontWeight(.black)
-                                                    .onTapGesture {
-                                                         select_list = index
-                                                     }
                                                 Text("さんからの\n忘れ物共有").fontWeight(.black).font(.title3)
                                             }
                                             Spacer()
