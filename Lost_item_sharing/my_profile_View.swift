@@ -19,12 +19,15 @@ struct my_profile_View: View {
     @State private var userInput = ""
     //読み込み
     @Binding var my_name: String
+    @Binding var post_name_main: [String]
     //忘れ物や無くしたもの
     @State var lost_item_list = ["バッグ"]
     //アイコン変更
     //写真選択画面を開く
     @State private var image: UIImage? = nil
     @State private var showingImagePicker = false
+    
+    @State var selected_get_number = 0
     
     var body: some View {
         NavigationView{
@@ -116,6 +119,11 @@ struct my_profile_View: View {
             .alert("名前を変更", isPresented: $name_change_alert, actions: {
                 TextField("タップして入力", text: $userInput)
                 Button("変える", action: {
+                    if let index = post_name.firstIndex(of: (my_name)){
+                        selected_get_number = index
+                    }
+                    post_name_main[selected_get_number] = userInput
+                    post_name[selected_get_number] = userInput
                     my_name = userInput
                 })
                 Button("キャンセル", role: .cancel, action: {})
