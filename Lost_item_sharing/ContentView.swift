@@ -56,21 +56,12 @@ struct ContentView: View {
                                     get: { post_name[index] },
                                     set: { post_name[index] = $0 }
                                 ))){
-                                    HStack{
-                                        Image("")
-                                            .resizable()
-                                            .scaledToFill()
-                                            .frame(width: 80, height: 80)
-                                            .cornerRadius(75)
-                                            .overlay(
-                                                RoundedRectangle(cornerRadius: 75).stroke(Color.black, lineWidth: 4))
-                                        VStack{
-                                            HStack{
-                                                Text("\(post_name_main[index])").font(.title).fontWeight(.black)
-                                                Text("さんからの\n忘れ物共有").fontWeight(.black).font(.title3)
-                                            }
-                                            Spacer()
+                                    VStack{
+                                        HStack{
+                                            Text("\(post_name_main[index])").font(.title).fontWeight(.black)
+                                            Text("さんからの\n忘れ物共有").fontWeight(.black).font(.title3)
                                         }
+                                        Spacer()
                                     }
                                 }
                             }
