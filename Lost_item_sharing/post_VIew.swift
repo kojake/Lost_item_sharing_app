@@ -63,7 +63,17 @@ struct post_VIew: View {
                             VStack{
                                 Spacer()
                                 Button(action: {
-                                    
+                                    //抜けているところがないか確認する
+                                    if title == ""{
+                                        print("タイトル無し")
+                                    }
+                                    else if content == ""{
+                                        print("内容無し")
+                                    }
+                                    else{
+                                        post_title.append(title)
+                                        post_content.append(content)
+                                    }
                                 }) {
                                     Text("投稿").frame(width: 350,height: 20)
                                 }
