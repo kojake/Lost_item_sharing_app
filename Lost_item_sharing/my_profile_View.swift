@@ -102,17 +102,21 @@ struct my_profile_View: View {
                         .shadow(radius: 20)
                         .frame(width: 160, height: 100)
                         //アイコン変更
-                        Button(action: {
-                            showingImagePicker.toggle()
-                        }) {
-                            Text("アイコンを変更")
+                        VStack{
+                            Text("アイコン変更").font(.title2).fontWeight(.black)
+                            HStack{
+                                Button(action: {
+                                    my_photo = "share_app_men_icon"
+                                }){
+                                    Image("share_app_men_icon").resizable().frame(width: 70, height: 70)
+                                }
+                                Button(action: {
+                                    my_photo = "share_app_women_icon"
+                                }){
+                                    Image("share_app_women_icon").resizable().frame(width: 70, height: 70)
+                                }
+                            }
                         }
-                        .padding()
-                        .accentColor(Color.white)
-                        .background(Color.blue)
-                        .cornerRadius(26)
-                        .shadow(radius: 20)
-                        .frame(width: 160, height: 100)
                     }
                 }
             }
