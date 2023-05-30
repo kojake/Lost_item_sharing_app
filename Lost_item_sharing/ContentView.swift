@@ -21,7 +21,7 @@ struct ContentView: View {
                 NavigationLink(destination: my_profile_View(my_name: $my_name_main), isActive: $showShould_my_profile_View){
                     EmptyView()
                 }.navigationBarBackButtonHidden(true)
-                NavigationLink(destination: post_VIew(), isActive: $showShould_post_View){
+                NavigationLink(destination: post_VIew(my_name: $my_name_main), isActive: $showShould_post_View){
                     EmptyView()
                 }.navigationBarBackButtonHidden(true)
                 HStack{

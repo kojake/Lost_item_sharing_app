@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct post_VIew: View {
+    @Binding var my_name: String
     //画面を閉じるために使う
     @Environment(\.dismiss) var dismiss
     //設定とプレビュー
@@ -73,6 +74,7 @@ struct post_VIew: View {
                                     else{
                                         post_title.append(title)
                                         post_content.append(content)
+                                        post_name.append(my_name)
                                     }
                                 }) {
                                     Text("投稿").frame(width: 350,height: 20)
@@ -174,11 +176,5 @@ struct BlueButtonStyle: ButtonStyle {
             .shadow(color:.black, radius: 4)
             .opacity(configuration.isPressed ? 0.6 : 1.0)
             .scaleEffect(configuration.isPressed ? 0.8 : 1.0)
-    }
-}
-
-struct post_VIew_Previews: PreviewProvider {
-    static var previews: some View {
-        post_VIew()
     }
 }
