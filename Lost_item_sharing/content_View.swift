@@ -21,7 +21,7 @@ struct content_View: View {
             ZStack(alignment: .leading) {
                 // メインコンテンツ
                 VStack{
-                    Text("\(post_name[selected_get_number])").font(.system(size: 50)).fontWeight(.black)
+                    Text("\(post_title[selected_get_number])").font(.system(size: 50)).fontWeight(.black)
                     VStack{
                         Text("\(post_content[selected_get_number])").font(.system(size: 20)).fontWeight(.black)
                     }

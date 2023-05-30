@@ -120,6 +120,7 @@ struct my_profile_View: View {
                     }
                 }
             }
+            
         }.navigationBarBackButtonHidden(true)
             .alert("名前を変更", isPresented: $name_change_alert, actions: {
                 TextField("タップして入力", text: $userInput)
