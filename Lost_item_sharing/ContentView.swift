@@ -13,7 +13,9 @@ struct ContentView: View {
     @State private var showShould_post_View = false
     @State private var showShould_content_View = false
     //自分の名前
-    @State var my_name_main = ""
+    @State var my_name_main = "海斗"
+    //タイムライン
+    @State var post_name_main = post_name
     
     var body: some View {
         NavigationView{
@@ -21,7 +23,7 @@ struct ContentView: View {
                 NavigationLink(destination: my_profile_View(my_name: $my_name_main), isActive: $showShould_my_profile_View){
                     EmptyView()
                 }.navigationBarBackButtonHidden(true)
-                NavigationLink(destination: post_VIew(my_name: $my_name_main), isActive: $showShould_post_View){
+                NavigationLink(destination: post_VIew(my_name: $my_name_main, post_name_main: $post_name_main), isActive: $showShould_post_View){
                     EmptyView()
                 }.navigationBarBackButtonHidden(true)
                 HStack{
@@ -47,7 +49,7 @@ struct ContentView: View {
                 }
                 ZStack{
                     List{
-                        ForEach(0..<post_name.count, id: \.self){index in
+                        ForEach(0..<post_name_main.count, id: \.self){index in
                             VStack{
                                 NavigationLink(destination: content_View(select_list: Binding<String>(
                                     get: { post_name[index] },
@@ -63,7 +65,7 @@ struct ContentView: View {
                                                 RoundedRectangle(cornerRadius: 75).stroke(Color.black, lineWidth: 4))
                                         VStack{
                                             HStack{
-                                                Text("\(post_name[index])").font(.title).fontWeight(.black)
+                                                Text("\(post_name_main[index])").font(.title).fontWeight(.black)
                                                 Text("さんからの\n忘れ物共有").fontWeight(.black).font(.title3)
                                             }
                                             Spacer()

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct post_VIew: View {
     @Binding var my_name: String
+    @Binding var post_name_main: [String]
     //画面を閉じるために使う
     @Environment(\.dismiss) var dismiss
     //設定とプレビュー
@@ -75,6 +76,11 @@ struct post_VIew: View {
                                         post_title.append(title)
                                         post_content.append(content)
                                         post_name.append(my_name)
+                                        post_name_main.append(my_name)
+                                        dismiss()
+                                        print(post_title)
+                                        print(post_content)
+                                        print(post_name)
                                     }
                                 }) {
                                     Text("投稿").frame(width: 350,height: 20)
