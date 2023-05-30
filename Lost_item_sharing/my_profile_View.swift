@@ -19,6 +19,7 @@ struct my_profile_View: View {
     @State private var userInput = ""
     //読み込み
     @Binding var my_name: String
+    @Binding var my_photo: String
     @Binding var post_name_main: [String]
     //忘れ物や無くしたもの
     @State var lost_item_list = ["バッグ"]
@@ -47,13 +48,13 @@ struct my_profile_View: View {
                     Spacer()
                     Text("自分のプロフィール").font(.system(size: 30)).fontWeight(.black)
                 }
-                Image("")
+                Image(my_photo)
                     .resizable()
                     .scaledToFill()
                     .frame(width: 200, height: 200)
                     .cornerRadius(200)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 75).stroke(Color.black, lineWidth: 4))
+                        RoundedRectangle(cornerRadius: 100).stroke(Color.black, lineWidth: 4))
                 Text("\(my_name)").font(.system(size: 35)).fontWeight(.black)
                 Spacer()
                 Text("_____________________________").font(.title2).fontWeight(.black)

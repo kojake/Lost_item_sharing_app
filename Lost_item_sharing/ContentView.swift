@@ -14,13 +14,14 @@ struct ContentView: View {
     @State private var showShould_content_View = false
     //自分の名前
     @State var my_name_main = "海斗"
+    @State var my_photo = "share_app_men_icon"
     //タイムライン
     @State var post_name_main = post_name
     
     var body: some View {
         NavigationView{
             VStack {
-                NavigationLink(destination: my_profile_View(my_name: $my_name_main, post_name_main: $post_name_main), isActive: $showShould_my_profile_View){
+                NavigationLink(destination: my_profile_View(my_name: $my_name_main, my_photo: $my_photo, post_name_main: $post_name_main), isActive: $showShould_my_profile_View){
                     EmptyView()
                 }.navigationBarBackButtonHidden(true)
                 NavigationLink(destination: post_VIew(my_name: $my_name_main, post_name_main: $post_name_main), isActive: $showShould_post_View){
@@ -33,7 +34,7 @@ struct ContentView: View {
                         showShould_my_profile_View = true
                     }){
                         Text("\(my_name_main)").font(.largeTitle).foregroundColor(Color.black)
-                        Image("")
+                        Image("share_app_men_icon")
                             .resizable()
                             .scaledToFill()
                             .frame(width: 80, height: 80)

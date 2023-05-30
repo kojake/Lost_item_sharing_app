@@ -10,7 +10,7 @@ import SwiftUI
 var post_name = ["hoge1","hoge2"]
 var post_title = ["忘れ物A","忘れ物b"]
 var post_content = ["丸々町にエルメスのバッグ落ちてた", "品川駅にルイビィトンの財布が落ちていた"]
-var post_photo = [""]
+var post_photo = ["share_app_men_icon", "share_app_women_icon"]
 var post_chat = [0:["a","b"]]
 
 @main
