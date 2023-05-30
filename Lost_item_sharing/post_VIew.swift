@@ -33,15 +33,17 @@ struct post_VIew: View {
                 if selectedIndex == 0{
                     VStack{
                         HStack{
-                            Button(action: {
-                                dismiss()
-                            }) {
-                                Text("戻る")
+                            VStack{
+                                Button(action: {
+                                    dismiss()
+                                }) {
+                                    Text("戻る")
+                                }
+                                .padding()
+                                .accentColor(Color.white)
+                                .background(Color.blue)
+                                .cornerRadius(26)
                             }
-                            .padding()
-                            .accentColor(Color.white)
-                            .background(Color.blue)
-                            .cornerRadius(26)
                             TextField("タップしてタイトルを入力", text: $title).frame(width: UIScreen.main.bounds.size.width - 80, height: 41, alignment: .center)
                                 .textFieldStyle(.plain)
                                 .background(Color.init(red: 211.0/255.0, green: 211.0/255.0, blue: 211.0/255.0))
@@ -53,10 +55,25 @@ struct post_VIew: View {
                                 .foregroundColor(.black)
                                 .fontWeight(.black)
                         }
-                        TextEditor(text: $content)
-                            .frame(height: 350)
-                            .padding()
-                            .border(Color.gray, width: 1)
+                        ZStack{
+                            TextEditor(text: $content)
+                                .frame(height: 350)
+                                .padding()
+                                .border(Color.gray, width: 1)
+                            VStack{
+                                Spacer()
+                                Button(action: {
+                                    
+                                }) {
+                                    Text("投稿").frame(width: 350,height: 20)
+                                }
+                                .padding()
+                                .accentColor(Color.white)
+                                .background(Color.blue)
+                                .cornerRadius(26)
+                                .frame(width: 350,height: 60)
+                            }
+                        }
                         Spacer()
                     }
                     HStack{

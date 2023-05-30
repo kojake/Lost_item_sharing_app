@@ -116,7 +116,6 @@ struct chat_View: View{
                     Button(action: {
                         post_chat_view[selected_get_number2]?.append(user_text_enter)
                         post_chat[selected_get_number2]?.append(user_text_enter)
-                        print(post_chat_view)
                     }){
                         Image(systemName: "arrow.up.circle").resizable().frame(width: 50, height: 50).foregroundColor(Color.green)
                     }
