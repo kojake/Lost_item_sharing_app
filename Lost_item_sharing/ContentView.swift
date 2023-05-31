@@ -48,13 +48,24 @@ struct ContentView: View {
                     Text("タイムライン").font(.title).fontWeight(.black)
                     Image(systemName: "clock.fill").resizable().scaledToFit().frame(width: 40,height: 40).foregroundColor(Color.green)
                 }
-                VStack{
+                ZStack{
                     HStack{
-                        Image(systemName: "tag.fill").frame(width: 410)
-                    }.foregroundColor(Color.white).font(.largeTitle).fontWeight(.black).background(Color.brown).cornerRadius(15)
-                    HStack{
-                        
-                    }
+                        Image(systemName: "tag.fill")
+                        Text("バッグ")
+                        .bold()
+                        .padding()
+                        .frame(width: 140, height: 50)
+                        .foregroundColor(Color.white)
+                        .background(Color.green)
+                        .cornerRadius(10)
+                        Text("スマホ")
+                        .bold()
+                        .padding()
+                        .frame(width: 140, height: 50)
+                        .foregroundColor(Color.white)
+                        .background(Color.green)
+                        .cornerRadius(10)
+                    }.frame(width: 430).foregroundColor(Color.white).font(.largeTitle).fontWeight(.black).background(Color.brown).cornerRadius(15)
                 }
                 ZStack{
                     List{
