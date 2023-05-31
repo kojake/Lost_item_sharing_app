@@ -29,10 +29,17 @@ struct my_profile_View: View {
     @State private var showingImagePicker = false
     
     @State var selected_get_number = 0
+    //タグ
+    @Binding var lost_tag_list: [String]
+    //画面遷移
+    @State var showShould_tag_change_View = false
     
     var body: some View {
         NavigationView{
             VStack{
+                NavigationLink(destination: tag_change_View(lost_tag_list: $lost_tag_list), isActive: $showShould_tag_change_View){
+                    EmptyView()
+                }.navigationBarBackButtonHidden(true)
                 HStack{
                     Button(action: {
                         dismiss()
@@ -88,8 +95,8 @@ struct my_profile_View: View {
                         }
                     }
                     VStack{
-                        Text("自分の\nプロフィール\n変更").font(.title).fontWeight(.black)
-                        //な目を変更
+                        Text("名前を変更").font(.title2).fontWeight(.black)
+                        //名前を変更
                         Button(action: {
                             name_change_alert = true
                         }) {
@@ -101,6 +108,7 @@ struct my_profile_View: View {
                         .cornerRadius(26)
                         .shadow(radius: 20)
                         .frame(width: 160, height: 100)
+                        Text("________________").fontWeight(.black)
                         //アイコン変更
                         VStack{
                             Text("アイコン変更").font(.title2).fontWeight(.black)
@@ -116,6 +124,22 @@ struct my_profile_View: View {
                                     Image("share_app_women_icon").resizable().frame(width: 70, height: 70)
                                 }
                             }
+                        }
+                        Text("________________").fontWeight(.black)
+                        //タグ
+                        VStack{
+                            Text("タグを変更").font(.title2).fontWeight(.black)
+                            Button(action: {
+                                showShould_tag_change_View = true
+                            }) {
+                                Text("タグを変更")
+                            }
+                            .padding()
+                            .accentColor(Color.white)
+                            .background(Color.blue)
+                            .cornerRadius(26)
+                            .shadow(radius: 20)
+                            .frame(width: 160, height: 100)
                         }
                     }
                 }

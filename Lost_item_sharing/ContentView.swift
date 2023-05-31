@@ -17,11 +17,13 @@ struct ContentView: View {
     @State var my_photo = "share_app_men_icon"
     //タイムライン
     @State var post_name_main = post_name
+    //タグ
+    @State var lost_tag_list = ["スマホ","バッグ"]
     
     var body: some View {
         NavigationView{
             VStack {
-                NavigationLink(destination: my_profile_View(my_name: $my_name_main, my_photo: $my_photo, post_name_main: $post_name_main), isActive: $showShould_my_profile_View){
+                NavigationLink(destination: my_profile_View(my_name: $my_name_main, my_photo: $my_photo, post_name_main: $post_name_main, lost_tag_list: $lost_tag_list), isActive: $showShould_my_profile_View){
                     EmptyView()
                 }.navigationBarBackButtonHidden(true)
                 NavigationLink(destination: post_VIew(my_name: $my_name_main, post_name_main: $post_name_main), isActive: $showShould_post_View){
@@ -51,14 +53,14 @@ struct ContentView: View {
                 ZStack{
                     HStack{
                         Image(systemName: "tag.fill")
-                        Text("バッグ")
+                        Text("\(lost_tag_list[0])")
                         .bold()
                         .padding()
                         .frame(width: 140, height: 50)
                         .foregroundColor(Color.white)
                         .background(Color.green)
                         .cornerRadius(10)
-                        Text("スマホ")
+                        Text("\(lost_tag_list[1])")
                         .bold()
                         .padding()
                         .frame(width: 140, height: 50)
