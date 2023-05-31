@@ -48,6 +48,14 @@ struct ContentView: View {
                     Text("タイムライン").font(.title).fontWeight(.black)
                     Image(systemName: "clock.fill").resizable().scaledToFit().frame(width: 40,height: 40).foregroundColor(Color.green)
                 }
+                VStack{
+                    HStack{
+                        Image(systemName: "tag.fill").frame(width: 410)
+                    }.foregroundColor(Color.white).font(.largeTitle).fontWeight(.black).background(Color.brown).cornerRadius(15)
+                    HStack{
+                        
+                    }
+                }
                 ZStack{
                     List{
                         ForEach((0..<post_name.count).reversed(), id: \.self){index in
