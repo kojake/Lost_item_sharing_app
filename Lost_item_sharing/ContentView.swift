@@ -18,7 +18,7 @@ struct ContentView: View {
     //タイムライン
     @State var post_name_main = post_name
     //タグ
-    @State var lost_tag_list = ["スマホ","バッグ"]
+    @State var lost_tag_list = post_tag
     
     var body: some View {
         NavigationView{
@@ -81,6 +81,10 @@ struct ContentView: View {
                                         HStack{
                                             Text("\(post_name_main[index])").font(.title).fontWeight(.black)
                                             Text("さんからの\n忘れ物共有").fontWeight(.black).font(.title3)
+                                            HStack{
+                                                Image(systemName: "tag.fill").font(.system(size: 19))
+                                                Text("\(post_tag[index])").fontWeight(.black).font(.title2)
+                                            }.frame(width: 100, height: 50).background(Color.brown).cornerRadius(20).foregroundColor(Color.white)
                                         }
                                         Spacer()
                                     }
