@@ -44,7 +44,12 @@ struct tag_change_View: View {
                     VStack{
                         HStack{
                             VStack{
-                                Text("\(lost_tag_list[0])").frame(width: 100, height: 70).font(.title).fontWeight(.black).background(Color.green).cornerRadius(20)
+                                if !lost_tag_list.isEmpty {
+                                    Text("\(lost_tag_list[0])").frame(width: 100, height: 70).font(.title).fontWeight(.black).background(Color.green).cornerRadius(20)
+                                }
+                                else{
+                                    Text("").frame(width: 100, height: 70).font(.title).fontWeight(.black).background(Color.green).cornerRadius(20)
+                                }
                                 Button(action: {
                                     tag_change_alert1 = true
                                 }) {
@@ -58,7 +63,12 @@ struct tag_change_View: View {
                                 }
                             }
                             VStack{
-                                Text("\(lost_tag_list[1])").frame(width: 100, height: 70).font(.title).fontWeight(.black).background(Color.green).cornerRadius(20)
+                                if !lost_tag_list.isEmpty {
+                                    Text("\(lost_tag_list[1])").frame(width: 100, height: 70).font(.title).fontWeight(.black).background(Color.green).cornerRadius(20)
+                                }
+                                else{
+                                    Text("").frame(width: 100, height: 70).font(.title).fontWeight(.black).background(Color.green).cornerRadius(20)
+                                }
                                 Button(action: {
                                     tag_change_alert2 = true
                                 }) {
@@ -80,7 +90,12 @@ struct tag_change_View: View {
         .alert("タグを変更", isPresented: $tag_change_alert1, actions: {
             TextField("タップして入力", text: $userInput)
             Button("変える", action: {
-                lost_tag_list[0] = userInput
+                if !lost_tag_list.isEmpty {
+                    lost_tag_list[0] = userInput
+                }
+                else{
+                    lost_tag_list[0] += userInput
+                }
             })
             Button("キャンセル", role: .cancel, action: {})
         }, message: {

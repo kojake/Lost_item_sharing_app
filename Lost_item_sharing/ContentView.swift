@@ -18,7 +18,7 @@ struct ContentView: View {
     //タイムライン
     @State var post_name_main = post_name
     //タグ
-    @State var lost_tag_list = ["バッグ","スマホ"]
+    @State var lost_tag_list = [String]()
     
     var body: some View {
         NavigationView{
@@ -53,20 +53,25 @@ struct ContentView: View {
                 ZStack{
                     HStack{
                         Image(systemName: "tag.fill")
-                        Text("\(lost_tag_list[0])")
-                        .bold()
-                        .padding()
-                        .frame(width: 140, height: 50)
-                        .foregroundColor(Color.white)
-                        .background(Color.green)
-                        .cornerRadius(10)
-                        Text("\(lost_tag_list[1])")
-                        .bold()
-                        .padding()
-                        .frame(width: 140, height: 50)
-                        .foregroundColor(Color.white)
-                        .background(Color.green)
-                        .cornerRadius(10)
+                        if !lost_tag_list.isEmpty {
+                            Text("\(lost_tag_list[0])")
+                                .bold()
+                                .padding()
+                                .frame(width: 140, height: 50)
+                                .foregroundColor(Color.white)
+                                .background(Color.green)
+                                .cornerRadius(10)
+                            Text("\(lost_tag_list[1])")
+                            .bold()
+                            .padding()
+                            .frame(width: 140, height: 50)
+                            .foregroundColor(Color.white)
+                            .background(Color.green)
+                            .cornerRadius(10)
+                        }
+                        else{
+                            Text("まだ何もタグづけされていません").font(.title).fontWeight(.black)
+                        }
                     }.frame(width: 430).foregroundColor(Color.white).font(.largeTitle).fontWeight(.black).background(Color.brown).cornerRadius(15)
                 }
                 ZStack{
