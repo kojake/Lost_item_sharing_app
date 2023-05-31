@@ -71,21 +71,32 @@ struct ContentView: View {
                 }
                 ZStack{
                     List{
-                        ForEach((0..<post_name.count).reversed(), id: \.self){index in
-                            VStack{
-                                NavigationLink(destination: content_View(select_list: Binding<String>(
-                                    get: { post_name[index] },
-                                    set: { post_name[index] = $0 }
-                                ))){
-                                    if post_tag.contains(lost_tag_list){
-                                        VStack{
-                                            HStack{
-                                                Text("\(post_name_main[index])").font(.title).fontWeight(.black)
-                                                Text("さんからの\n忘れ物共有").fontWeight(.black).font(.title3)
-                                                HStack{
-                                                    Image(systemName: "tag.fill").font(.system(size: 19))
-                                                    Text("\(post_tag[index])").fontWeight(.black).font(.title2)
-                                                }.frame(width: 100, height: 50).background(Color.brown).cornerRadius(20).foregroundColor(Color.white)
+                        ForEach((0..<post_name.count).reversed(), id: \.self) { index in
+                            if lost_tag_list.contains(post_tag[index]) {
+                                VStack {
+                                    NavigationLink(destination: content_View(select_list: Binding<String>(
+                                        get: { post_name[index] },
+                                        set: { post_name[index] = $0 }
+                                    ))) {
+                                        VStack {
+                                            HStack {
+                                                Text("\(post_name_main[index])")
+                                                    .font(.title)
+                                                    .fontWeight(.black)
+                                                Text("さんからの\n忘れ物共有")
+                                                    .fontWeight(.black)
+                                                    .font(.title3)
+                                                HStack {
+                                                    Image(systemName: "tag.fill")
+                                                        .font(.system(size: 19))
+                                                    Text("\(post_tag[index])")
+                                                        .fontWeight(.black)
+                                                        .font(.title2)
+                                                }
+                                                .frame(width: 100, height: 50)
+                                                .background(Color.brown)
+                                                .cornerRadius(20)
+                                                .foregroundColor(Color.white)
                                             }
                                             Spacer()
                                         }
