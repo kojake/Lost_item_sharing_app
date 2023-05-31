@@ -73,6 +73,7 @@ struct tag_change_View: View {
                             }
                         }
                     }.frame(width: 350, height: 200).background(Color.white).cornerRadius(20)
+                    Spacer()
                 }
             }
         }.navigationBarBackButtonHidden(true)

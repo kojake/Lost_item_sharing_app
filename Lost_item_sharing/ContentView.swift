@@ -30,7 +30,7 @@ struct ContentView: View {
                     EmptyView()
                 }.navigationBarBackButtonHidden(true)
                 HStack{
-                    Text("忘れ物共有\n").font(.system(size: 35)).fontWeight(.black)
+                    Text("忘れ物共有\nTnrackFound").font(.system(size: 35)).fontWeight(.black)
                     Spacer()
                     Button(action: {
                         showShould_my_profile_View = true
