@@ -18,6 +18,8 @@ struct post_VIew: View {
     //本文の詳細
     @State private var title = ""
     @State private var content = ""
+    //タグ選択
+    @State private var selectedValue: String = ""
     
     var body: some View {
         NavigationView{
@@ -64,6 +66,17 @@ struct post_VIew: View {
                                 .border(Color.gray, width: 1)
                             VStack{
                                 Spacer()
+                                HStack{
+                                    Spacer()
+                                    HStack{
+                                        Image(systemName: "tag.fill").foregroundColor(Color.white)
+                                        Menu("選択してください") {
+                                            ForEach(post_tag, id: \.self) { value in
+                                                AnyView(Text(value))
+                                            }
+                                        }.foregroundColor(Color.white)
+                                    }.frame(width: 150, height: 50).background(Color.brown).cornerRadius(20)
+                                }
                                 Button(action: {
                                     //抜けているところがないか確認する
                                     if title == ""{
