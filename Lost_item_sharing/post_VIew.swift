@@ -70,11 +70,12 @@ struct post_VIew: View {
                                     Spacer()
                                     HStack{
                                         Image(systemName: "tag.fill").foregroundColor(Color.white)
-                                        Menu("選択してください") {
-                                            ForEach(post_tag, id: \.self) { value in
-                                                AnyView(Text(value))
+                                        Picker(selection: $selectedValue, label: Text("タグを選択"), content: {
+                                            ForEach(post_tag, id:\.self) { value in
+                                                Text("\(value)")
+                                                    .tag(value).font(.title).fontWeight(.black)
                                             }
-                                        }.foregroundColor(Color.white)
+                                        })
                                     }.frame(width: 150, height: 50).background(Color.brown).cornerRadius(20)
                                 }
                                 Button(action: {
