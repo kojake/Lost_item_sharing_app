@@ -52,18 +52,6 @@ struct content_View: View {
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 4))
                     }
-                    Button(action: {
-                        if (self.offset == self.openOffset) {
-                            self.offset = self.closeOffset
-                        } else {
-                            self.offset = self.openOffset
-                        }
-                    }) {
-                        VStack {
-                            Image(systemName: "message.fill")
-                            Text("チャットを\n見てみる")
-                        }
-                    }.buttonStyle(BlueButtonStyle()).frame(width: 160, height: 100)
                 }
             }.onAppear{
                 if let index = post_name.firstIndex(of: select_list){
@@ -71,15 +59,5 @@ struct content_View: View {
                 }
             }
         }.navigationBarBackButtonHidden(true)
-    }
-}
-
-struct OvalTextFieldStyle: TextFieldStyle {
-    func _body(configuration: TextField<Self._Label>) -> some View {
-        configuration
-            .padding(10)
-            .background(LinearGradient(gradient: Gradient(colors: [Color.orange, Color.orange]), startPoint: .topLeading, endPoint: .bottomTrailing))
-            .cornerRadius(20)
-            .shadow(color: .gray, radius: 10)
     }
 }

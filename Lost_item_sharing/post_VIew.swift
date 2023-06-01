@@ -153,14 +153,6 @@ struct post_VIew: View {
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 4))
                             }
-                            Button(action: {
-                                
-                            }) {
-                                VStack {
-                                    Image(systemName: "message.fill")
-                                    Text("チャットを\n見てみる")
-                                }
-                            }.buttonStyle(BlueButtonStyle()).frame(width: 160, height: 100)
                         }
                         Spacer()
                     }
@@ -174,20 +166,5 @@ struct post_VIew: View {
                 }
             }
         }.navigationBarBackButtonHidden(true)
-    }
-}
-
-struct BlueButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .font(.system(size: 20, weight:.bold, design: .rounded))
-            .foregroundColor(.white)
-            .padding(.horizontal)
-            .padding(5)
-            .background(Color.blue.opacity(0.8))
-            .cornerRadius(20)
-            .shadow(color:.black, radius: 4)
-            .opacity(configuration.isPressed ? 0.6 : 1.0)
-            .scaleEffect(configuration.isPressed ? 0.8 : 1.0)
     }
 }
