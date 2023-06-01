@@ -53,14 +53,25 @@ struct ContentView: View {
                 ZStack{
                     HStack{
                         Image(systemName: "tag.fill")
-                        if !lost_tag_list.isEmpty {
-                            Text("\(lost_tag_list[0])")
+                        if let firstElement = lost_tag_list.first {
+                            Text("\(firstElement)")
                                 .bold()
                                 .padding()
                                 .frame(width: 140, height: 50)
                                 .foregroundColor(Color.white)
                                 .background(Color.green)
                                 .cornerRadius(10)
+                        }
+                        else{
+                            Text("タグ無")
+                                .bold()
+                                .padding()
+                                .frame(width: 140, height: 50)
+                                .foregroundColor(Color.white)
+                                .background(Color.green)
+                                .cornerRadius(10)
+                        }
+                        if lost_tag_list.indices.contains(1){
                             Text("\(lost_tag_list[1])")
                             .bold()
                             .padding()
@@ -70,7 +81,13 @@ struct ContentView: View {
                             .cornerRadius(10)
                         }
                         else{
-                            Text("まだ何もタグづけされていません").font(.title).fontWeight(.black)
+                            Text("タグ無")
+                                .bold()
+                                .padding()
+                                .frame(width: 140, height: 50)
+                                .foregroundColor(Color.white)
+                                .background(Color.green)
+                                .cornerRadius(10)
                         }
                     }.frame(width: 430).foregroundColor(Color.white).font(.largeTitle).fontWeight(.black).background(Color.brown).cornerRadius(15)
                 }
