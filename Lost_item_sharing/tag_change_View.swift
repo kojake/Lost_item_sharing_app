@@ -87,7 +87,7 @@ struct tag_change_View: View {
                 }
             }
         }.navigationBarBackButtonHidden(true)
-        .alert("タグを変更", isPresented: $tag_change_alert1, actions: {
+        .alert("タグ変更", isPresented: $tag_change_alert1, actions: {
             TextField("タップして入力", text: $userInput)
             Button("変える", action: {
                 if lost_tag_list.isEmpty {
@@ -104,7 +104,7 @@ struct tag_change_View: View {
         }, message: {
             Text("タグをを変更するならタップして入力をして下さい")
         })
-        .alert("タグを変更", isPresented: $tag_change_alert2, actions: {
+        .alert("タグ変更", isPresented: $tag_change_alert2, actions: {
             TextField("タップして入力", text: $userInput)
             Button("変える", action: {
                 if lost_tag_list.isEmpty {
