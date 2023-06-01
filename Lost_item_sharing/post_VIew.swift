@@ -10,6 +10,7 @@ import SwiftUI
 struct post_VIew: View {
     @Binding var my_name: String
     @Binding var post_name_main: [String]
+    @Binding var post_tag: [String]
     //画面を閉じるために使う
     @Environment(\.dismiss) var dismiss
     //設定とプレビュー
@@ -86,15 +87,20 @@ struct post_VIew: View {
                                     else if content == ""{
                                         print("内容無し")
                                     }
+                                    else if selectedValue == ""{
+                                        print("タグ無し")
+                                    }
                                     else{
                                         post_title.append(title)
                                         post_content.append(content)
                                         post_name.append(my_name)
                                         post_name_main.append(my_name)
+                                        post_tag.append(selectedValue)
                                         dismiss()
                                         print(post_title)
                                         print(post_content)
                                         print(post_name)
+                                        print(post_tag)
                                     }
                                 }) {
                                     Text("投稿").frame(width: 350,height: 20)
