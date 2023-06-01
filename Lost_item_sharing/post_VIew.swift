@@ -21,6 +21,9 @@ struct post_VIew: View {
     @State private var content = ""
     //タグ選択
     @State private var selectedValue: String = ""
+    //error_alert
+    @State private var error_alert = false
+    @State var alert_message = ""
     
     var body: some View {
         NavigationView{
@@ -82,13 +85,16 @@ struct post_VIew: View {
                                 Button(action: {
                                     //抜けているところがないか確認する
                                     if title == ""{
-                                        print("タイトル無し")
+                                        alert_message = "タイトルをつけて下さい"
+                                        error_alert = true
                                     }
                                     else if content == ""{
-                                        print("内容無し")
+                                        alert_message = "内容を入力して下さい"
+                                        error_alert = true
                                     }
                                     else if selectedValue == ""{
-                                        print("タグ無し")
+                                        alert_message = "タグをつけて下さい"
+                                        error_alert = true
                                     }
                                     else{
                                         post_title.append(title)
@@ -185,6 +191,11 @@ struct post_VIew: View {
                     }
                 }
             }
+            .alert(isPresented: $error_alert) {
+                Alert(title: Text("エラー"),
+                      message: Text(alert_message))   // 詳細メッセージの追加
+            }
+            
         }.navigationBarBackButtonHidden(true)
     }
 }
