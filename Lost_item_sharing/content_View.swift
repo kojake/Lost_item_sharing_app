@@ -18,6 +18,7 @@ struct content_View: View {
     @State private var openOffset = CGFloat.zero
     //写真をshare
     @State private var sharedText: String? = "あなたが探していた落とし物はこれではないでしょうか"
+    @State private var sharedImage: UIImage? = UIImage(named: "share_app_men_icon")
     
     
     var body: some View {
@@ -58,6 +59,18 @@ struct content_View: View {
                 .frame(width: 350, height: 400)
                 .padding()
                 .border(Color.gray, width: 1)
+                HStack{
+                    VStack{
+                        Text("実際の画像").fontWeight(.black)
+                        Image("")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 200, height: 180)
+                            .cornerRadius(0)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 4))
+                    }
+                }
             }.onAppear{
                 if let index = post_name.firstIndex(of: select_list){
                     selected_get_number = index
@@ -70,6 +83,10 @@ struct content_View: View {
         
         if let text = sharedText {
             activityItems.append(text)
+        }
+        
+        if let image = sharedImage {
+            activityItems.append(image)
         }
 
         let activityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
