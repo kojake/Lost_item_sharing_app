@@ -35,8 +35,22 @@ struct content_View: View {
                 }
                 Spacer()
                 Text("\(post_title[selected_get_number])").font(.system(size: 50)).fontWeight(.black)
-                VStack{
-                    Text("\(post_content[selected_get_number])").font(.system(size: 20)).fontWeight(.black)
+                ZStack{
+                    VStack{
+                        Text("\(post_content[selected_get_number])").font(.system(size: 20)).fontWeight(.black)
+                        Spacer()
+                        HStack{
+                            Spacer()
+                            Button(action: {
+                                
+                            }){
+                                Text("Share").frame(width: 100, height: 100)
+                            }
+                            .font(.system(.title2, design: .rounded, weight: .bold))
+                            .foregroundColor(.yellow)
+                            .background(Capsule().stroke(.yellow, lineWidth: 2))
+                        }
+                    }
                 }
                 .frame(width: 350, height: 400)
                 .padding()
