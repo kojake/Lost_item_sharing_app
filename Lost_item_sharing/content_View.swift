@@ -16,6 +16,10 @@ struct content_View: View {
     @State private var offset = CGFloat.zero
     @State private var closeOffset = CGFloat.zero
     @State private var openOffset = CGFloat.zero
+    //写真をshare
+    @State private var sharedText: String? = "あなたが探していた落とし物はこれではないでしょうか"
+    @State private var sharedImage: UIImage? = UIImage(named: "share_app_men_icon")
+    
     
     var body: some View {
         NavigationView{
@@ -42,7 +46,7 @@ struct content_View: View {
                         HStack{
                             Spacer()
                             Button(action: {
-                                
+                                shareContent()
                             }){
                                 Text("Share").frame(width: 100, height: 100)
                             }
@@ -73,5 +77,22 @@ struct content_View: View {
                 }
             }
         }.navigationBarBackButtonHidden(true)
+    }
+    func shareContent() {
+        var activityItems: [Any] = []
+        
+        if let text = sharedText {
+            activityItems.append(text)
+        }
+        
+        if let image = sharedImage {
+            activityItems.append(image)
+        }
+
+        let activityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+
+        if let rootViewController = UIApplication.shared.windows.first?.rootViewController {
+            rootViewController.present(activityViewController, animated: true, completion: nil)
+        }
     }
 }
