@@ -25,9 +25,9 @@ struct PhotoModel: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
     
     class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-        let parent: PhotoModal
+        let parent: PhotoModel
         
-        init(_ parent: PhotoModal) {
+        init(_ parent: PhotoModel) {
             self.parent = parent
         }
         
@@ -40,3 +40,4 @@ struct PhotoModel: UIViewControllerRepresentable {
         }
     }
 }
+

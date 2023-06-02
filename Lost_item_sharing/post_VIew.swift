@@ -24,6 +24,9 @@ struct post_VIew: View {
     //error_alert
     @State private var error_alert = false
     @State var alert_message = ""
+    //写真を選択
+    @State private var image: UIImage? = nil
+    @State private var showingImagePicker = false
     
     var body: some View {
         NavigationView{
@@ -123,29 +126,19 @@ struct post_VIew: View {
                     HStack{
                         VStack{
                             Text("実際の画像").fontWeight(.black)
-                            Image("")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 200, height: 180)
-                                .cornerRadius(0)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 4))
+                            if let image = image {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 200, height: 180)
+                                    .cornerRadius(0)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 4))
+                            }
                         }
                         VStack{
                             Button(action: {
-                                
-                            }) {
-                                Image(systemName: "camera.fill")
-                                    .resizable()
-                                    .padding()
-                                    .frame(width: 80, height: 80)
-                                    .imageScale(.large)
-                                    .foregroundColor(Color.white)
-                                    .background(Color.green)
-                                    .clipShape(Circle())
-                            }
-                            Button(action: {
-                                
+                                showingImagePicker = true
                             }) {
                                 Image(systemName: "photo")
                                     .resizable()
@@ -184,6 +177,9 @@ struct post_VIew: View {
                     }
                 }
             }
+            .sheet(isPresented: $showingImagePicker, content: {
+                PhotoModal(image: $image)
+            })
             .toolbar {
                 ToolbarItem(placement: .keyboard) {
                     Button("閉じる") {
