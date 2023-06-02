@@ -20,6 +20,8 @@ struct ContentView: View {
     @State var post_tag_main = post_tag
     //タグ
     @State var lost_tag_list = [String]()
+    //写真
+    @State private var images: [UIImage] = []
     
     var body: some View {
         NavigationView{

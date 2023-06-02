@@ -13,6 +13,7 @@ var post_tag = ["バッグ","スマホ","保健書"]
 var post_content = ["丸々町にエルメスのバッグ落ちてた","品川駅にルイビィトンの財布が落ちていた","品川区にうんこが落ちていた"]
 var post_chat = [0:["a","b"]]
 
+
 @main
 struct Lost_item_sharingApp: App {
     var body: some Scene {
