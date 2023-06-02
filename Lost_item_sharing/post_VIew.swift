@@ -120,44 +120,6 @@ struct post_VIew: View {
                         }
                         Spacer()
                     }
-                    HStack{
-                        VStack{
-                            Text("実際の画像").fontWeight(.black)
-                            Image("")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 200, height: 180)
-                                .cornerRadius(0)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 4))
-                        }
-                        VStack{
-                            Button(action: {
-                                
-                            }) {
-                                Image(systemName: "camera.fill")
-                                    .resizable()
-                                    .padding()
-                                    .frame(width: 80, height: 80)
-                                    .imageScale(.large)
-                                    .foregroundColor(Color.white)
-                                    .background(Color.green)
-                                    .clipShape(Circle())
-                            }
-                            Button(action: {
-                                
-                            }) {
-                                Image(systemName: "photo")
-                                    .resizable()
-                                    .padding()
-                                    .frame(width: 80, height: 80)
-                                    .imageScale(.large)
-                                    .foregroundColor(Color.white)
-                                    .background(Color.green)
-                                    .clipShape(Circle())
-                            }
-                        }
-                    }
                 }
                 else{
                     VStack{
