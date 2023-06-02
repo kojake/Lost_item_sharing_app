@@ -16,6 +16,8 @@ struct content_View: View {
     @State private var offset = CGFloat.zero
     @State private var closeOffset = CGFloat.zero
     @State private var openOffset = CGFloat.zero
+    //写真を選択
+    @State private var showingImagePicker = false
     //写真をshare
     @State private var sharedText: String? = "あなたが探していた落とし物はこれではないでしょうか"
     @State private var sharedImage: UIImage? = UIImage(named: "share_app_men_icon")
@@ -76,6 +78,10 @@ struct content_View: View {
                     selected_get_number = index
                 }
             }
+            .sheet(isPresented: $showingImagePicker, content: {
+                PhotoModal(image: $image)
+            })
+            
         }.navigationBarBackButtonHidden(true)
     }
     func shareContent() {
