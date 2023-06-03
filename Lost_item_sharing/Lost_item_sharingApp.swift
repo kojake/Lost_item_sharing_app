@@ -6,14 +6,24 @@
 //
 
 import SwiftUI
+import FirebaseCore
 
-var post_name = ["hoge1","hoge2","hoge3"]
-var post_title = ["忘れ物A","忘れ物b","忘れ物c"]
-var post_tag = ["バッグ","スマホ","保健書"]
-var post_content = ["丸々町にエルメスのバッグ落ちてた","品川駅にルイビィトンの財布が落ちていた","品川区にうんこが落ちていた"]
+var post_name = [String]()
+var post_title = [String]()
+var post_tag = [String]()
+var post_content = [String]()
 
+class AppDelegate: NSObject, UIApplicationDelegate {
+  func application(_ application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    FirebaseApp.configure()
+
+    return true
+  }
+}
 @main
 struct Lost_item_sharingApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
             ContentView()

@@ -19,6 +19,7 @@ struct post_VIew: View {
     //本文の詳細
     @State private var title = ""
     @State private var content = ""
+    @State private var tag = ""
     //タグ選択
     @State private var selectedValue: String = ""
     //error_alert
@@ -76,13 +77,24 @@ struct post_VIew: View {
                                     Spacer()
                                     HStack{
                                         Image(systemName: "tag.fill").foregroundColor(Color.white)
+                                        TextField("タグを入力", text: $tag).frame(width: 200, height: 40)
+                                            .textFieldStyle(.plain)
+                                            .background(Color.init(red: 211.0/255.0, green: 211.0/255.0, blue: 211.0/255.0))
+                                            .textContentType(.emailAddress)
+                                            .cornerRadius(10)
+                                            .multilineTextAlignment(.center)
+                                            .padding(.top, 15)
+                                            .padding(.bottom, 10)
+                                            .foregroundColor(.black)
+                                            .fontWeight(.black)
                                         Picker(selection: $selectedValue, label: Text("タグを選択"), content: {
                                             ForEach(post_tag, id:\.self) { value in
                                                 Text("\(value)")
                                                     .tag(value).font(.title).fontWeight(.black)
                                             }
-                                        })
-                                    }.frame(width: 150, height: 50).background(Color.brown).cornerRadius(20)
+                                        }).frame(width: 50, height: 40).cornerRadius(20).background(Color.white)
+                                        Spacer()
+                                    }.frame(width: 300, height: 50).background(Color.brown).cornerRadius(20)
                                 }
                                 Button(action: {
                                     //抜けているところがないか確認する
@@ -103,7 +115,12 @@ struct post_VIew: View {
                                         post_content.append(content)
                                         post_name.append(my_name)
                                         post_name_main.append(my_name)
-                                        post_tag.append(selectedValue)
+                                        if tag.isEmpty{
+                                            post_tag.append(selectedValue)
+                                        }
+                                        else{
+                                            post_tag.append(tag)
+                                        }
                                         dismiss()
                                         print(post_title)
                                         print(post_content)
