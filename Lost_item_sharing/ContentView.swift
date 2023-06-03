@@ -20,6 +20,8 @@ struct ContentView: View {
     //タイムライン
     @State var post_name_main = post_name
     @State var post_tag_main = post_tag
+    //first_view
+    @State private var first_View_whether_to_display = false
     
     var body: some View {
         NavigationView{
@@ -29,7 +31,7 @@ struct ContentView: View {
                 }.navigationBarBackButtonHidden(true)
                 NavigationLink(destination: post_VIew(my_name: $my_name_main, post_name_main: $post_name_main, post_tag: $post_tag_main), isActive: $showShould_post_View){
                     EmptyView()
-                }.navigationBarBackButtonHidden(true).onAppear{print("aaaa",lost_tag_list)}
+                }.navigationBarBackButtonHidden(true)
                 HStack{
                     Text("忘れ物共有\nTnrackFound").font(.system(size: 35)).fontWeight(.black)
                     Spacer()
@@ -149,6 +151,12 @@ struct ContentView: View {
                     }
                 }
             }
+        }
+        .sheet(isPresented: $first_View_whether_to_display) {
+            first_View(my_name_main: $my_name_main, post_name: $post_name_main, lost_tag_list: $lost_tag_list, post_tag: $post_tag_main)
+         }
+        .onAppear{
+            first_View_whether_to_display = true
         }
     }
 }
