@@ -106,7 +106,7 @@ struct post_VIew: View {
                                         alert_message = "内容を入力して下さい"
                                         error_alert = true
                                     }
-                                    else if selectedValue == ""{
+                                    else if selectedValue == "" && tag.isEmpty{
                                         alert_message = "タグをつけて下さい"
                                         error_alert = true
                                     }
@@ -122,10 +122,6 @@ struct post_VIew: View {
                                             post_tag.append(tag)
                                         }
                                         dismiss()
-                                        print(post_title)
-                                        print(post_content)
-                                        print(post_name)
-                                        print(post_tag)
                                     }
                                 }) {
                                     Text("投稿").frame(width: 350,height: 20)

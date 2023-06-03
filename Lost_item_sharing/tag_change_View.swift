@@ -92,12 +92,15 @@ struct tag_change_View: View {
             Button("変える", action: {
                 if lost_tag_list.isEmpty {
                     lost_tag_list.append(userInput)
+                    UserDefaults.standard.set(lost_tag_list, forKey: "lost_tag_list_key")
                 }
                 else if let firstElement = lost_tag_list.first{
                     lost_tag_list.append(userInput)
+                    UserDefaults.standard.set(lost_tag_list, forKey: "lost_tag_list_key")
                 }
                 else{
                     lost_tag_list[0] = userInput
+                    UserDefaults.standard.set(lost_tag_list, forKey: "lost_tag_list_key")
                 }
             })
             Button("キャンセル", role: .cancel, action: {})
@@ -109,12 +112,15 @@ struct tag_change_View: View {
             Button("変える", action: {
                 if lost_tag_list.isEmpty {
                     lost_tag_list.append(userInput)
+                    UserDefaults.standard.set(lost_tag_list, forKey: "lost_tag_list_key")
                 }
                 else if let firstElement = lost_tag_list.first{
                     lost_tag_list.append(userInput)
+                    UserDefaults.standard.set(lost_tag_list, forKey: "lost_tag_list_key")
                 }
                 else{
                     lost_tag_list[1] = userInput
+                    UserDefaults.standard.set(lost_tag_list, forKey: "lost_tag_list_key")
                 }
             })
             Button("キャンセル", role: .cancel, action: {})

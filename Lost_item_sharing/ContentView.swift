@@ -15,12 +15,11 @@ struct ContentView: View {
     //自分の名前
     @State private var my_name_main: String = UserDefaults.standard.object(forKey: "my_name_key") as? String ?? ""
     @State private var my_photo: String = UserDefaults.standard.object(forKey: "my_photo_key") as? String ?? ""
-    
+    //タグ
+    @State var lost_tag_list: [String] = UserDefaults.standard.string(forKey: "lost_tag_list_key")?.components(separatedBy: ",") ?? []
     //タイムライン
     @State var post_name_main = post_name
     @State var post_tag_main = post_tag
-    //タグ
-    @State var lost_tag_list = [String]()
     
     var body: some View {
         NavigationView{
@@ -30,7 +29,7 @@ struct ContentView: View {
                 }.navigationBarBackButtonHidden(true)
                 NavigationLink(destination: post_VIew(my_name: $my_name_main, post_name_main: $post_name_main, post_tag: $post_tag_main), isActive: $showShould_post_View){
                     EmptyView()
-                }.navigationBarBackButtonHidden(true)
+                }.navigationBarBackButtonHidden(true).onAppear{print("aaaa",lost_tag_list)}
                 HStack{
                     Text("忘れ物共有\nTnrackFound").font(.system(size: 35)).fontWeight(.black)
                     Spacer()
