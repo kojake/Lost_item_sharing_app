@@ -13,15 +13,14 @@ struct ContentView: View {
     @State private var showShould_post_View = false
     @State private var showShould_content_View = false
     //自分の名前
-    @State var my_name_main = "海斗"
-    @State var my_photo = "share_app_men_icon"
+    @State private var my_name_main: String = UserDefaults.standard.object(forKey: "my_name_key") as? String ?? ""
+    @State private var my_photo: String = UserDefaults.standard.object(forKey: "my_photo_key") as? String ?? ""
+    
     //タイムライン
     @State var post_name_main = post_name
     @State var post_tag_main = post_tag
     //タグ
     @State var lost_tag_list = [String]()
-    //写真
-    @State private var images: [UIImage] = []
     
     var body: some View {
         NavigationView{
@@ -39,7 +38,7 @@ struct ContentView: View {
                         showShould_my_profile_View = true
                     }){
                         Text("\(my_name_main)").font(.largeTitle).foregroundColor(Color.black)
-                        Image("share_app_men_icon")
+                        Image("\(my_photo)")
                             .resizable()
                             .scaledToFill()
                             .frame(width: 80, height: 80)

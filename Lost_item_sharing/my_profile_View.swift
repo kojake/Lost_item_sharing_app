@@ -115,11 +115,13 @@ struct my_profile_View: View {
                             HStack{
                                 Button(action: {
                                     my_photo = "share_app_men_icon"
+                                    UserDefaults.standard.set(my_photo, forKey: "my_photo_key")
                                 }){
                                     Image("share_app_men_icon").resizable().frame(width: 70, height: 70)
                                 }
                                 Button(action: {
                                     my_photo = "share_app_women_icon"
+                                    UserDefaults.standard.set(my_photo, forKey: "my_photo_key")
                                 }){
                                     Image("share_app_women_icon").resizable().frame(width: 70, height: 70)
                                 }
@@ -154,7 +156,8 @@ struct my_profile_View: View {
                     }
                     post_name_main[selected_get_number] = userInput
                     post_name[selected_get_number] = userInput
-                    my_name = userInput
+                    //名前を保存する
+                    UserDefaults.standard.set(userInput, forKey: "my_name_key")
                 })
                 Button("キャンセル", role: .cancel, action: {})
             }, message: {
