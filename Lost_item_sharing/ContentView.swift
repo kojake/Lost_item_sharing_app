@@ -13,10 +13,10 @@ struct ContentView: View {
     @State private var showShould_post_View = false
     @State private var showShould_content_View = false
     //自分の名前
-    @State private var my_name_main: String = UserDefaults.standard.object(forKey: "my_name_key") as? String ?? ""
-    @State private var my_photo: String = UserDefaults.standard.object(forKey: "my_photo_key") as? String ?? ""
+    @State private var my_name_main: String = ""
+    @State private var my_photo: String = ""
     //タグ
-    @State var lost_tag_list: [String] = UserDefaults.standard.string(forKey: "lost_tag_list_key")?.components(separatedBy: ",") ?? []
+    @State var lost_tag_list: [String] = []
     //タイムライン
     @State var post_name_main = post_name
     @State var post_tag_main = post_tag
@@ -157,6 +157,19 @@ struct ContentView: View {
          }
         .onAppear{
             first_View_whether_to_display = true
+            if let savedValue = UserDefaults.standard.object(forKey: "my_name_key") as? String {
+                my_name_main = savedValue
+            }
+
+            if let savedValue = UserDefaults.standard.object(forKey: "my_photo_key") as? String {
+                my_photo = savedValue
+            }
+
+            if let savedValue = UserDefaults.standard.string(forKey: "lost_tag_list_key")?.components(separatedBy: ",") {
+                lost_tag_list = savedValue
+            } else {
+                lost_tag_list = []
+            }
         }
     }
 }
