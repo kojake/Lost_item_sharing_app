@@ -22,6 +22,7 @@ struct ContentView: View {
     @State var post_tag_main = post_tag
     //first_view
     @State private var first_View_whether_to_display = false
+    @State private var isFirstTime: Int?
     
     var body: some View {
         NavigationView{
@@ -156,7 +157,16 @@ struct ContentView: View {
             first_View(my_name_main: $my_name_main, post_name: $post_name_main, lost_tag_list: $lost_tag_list, post_tag: $post_tag_main)
          }
         .onAppear{
-            first_View_whether_to_display = true
+            //初回表示
+            if let value = UserDefaults.standard.object(forKey: "isFirstTime_key") as? Int {
+                isFirstTime = value
+            }
+            if isFirstTime == 0{
+                first_View_whether_to_display = true
+                isFirstTime = 1
+                UserDefaults.standard.set(isFirstTime, forKey: "isFirstTime_key")
+            }
+            
             if let savedValue = UserDefaults.standard.object(forKey: "my_name_key") as? String {
                 my_name_main = savedValue
             }
