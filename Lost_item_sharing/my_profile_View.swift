@@ -13,21 +13,19 @@ struct my_profile_View: View {
     @Environment(\.dismiss) var dismiss
     //名前変更アラート
     @State private var name_change_alert = false
-    //忘れ物リストに増やすアラート
-    @State private var add_lost_item_list_alert = false
     //アラート入力取得
     @State private var userInput = ""
     //読み込み
     @Binding var my_name: String
     @Binding var my_photo: String
     @Binding var post_name_main: [String]
-    //忘れ物や無くしたもの
-    @State var lost_item_list = ["バッグ"]
-    //アイコン変更
+    //回復key
+    @State private var recovery_key: [String] = ["","",""]
+    let words = ["apple", "banana", "cat", "dog", "elephant", "fox", "giraffe", "horse", "igloo", "jaguar"]
     //写真選択画面を開く
     @State private var image: UIImage? = nil
     @State private var showingImagePicker = false
-    
+    //
     @State var selected_get_number = 0
     //タグ
     @Binding var lost_tag_list: [String]
@@ -68,31 +66,32 @@ struct my_profile_View: View {
                 HStack{
                     ZStack{
                         VStack{
-                            Text("自分が無くしたり\n忘れた物").font(.title2).fontWeight(.black)
-                            List{
-                                ForEach(0..<lost_item_list.count, id: \.self){index in
-                                    Text(lost_item_list[index]).font(.title2).fontWeight(.black)
-                                }.onDelete(perform: rowRemove)
-                            }
-                        }
-                        VStack{
-                            Spacer()
                             HStack{
-                                Spacer()
-                                Button(action: {
-                                    add_lost_item_list_alert = true
-                                }) {
-                                    Image(systemName: "plus")
-                                        .resizable()
-                                        .padding()
-                                        .frame(width: 50, height: 50)
-                                        .imageScale(.large)
-                                        .foregroundColor(Color.white)
-                                        .background(Color.green)
-                                        .clipShape(Circle())
-                                }
+                                Image(systemName: "key").font(.largeTitle).foregroundColor(Color.yellow)
+                                Text("回復キー").font(.title2).fontWeight(.black).foregroundColor(Color.white)
+                                Image(systemName: "key").font(.largeTitle).foregroundColor(Color.yellow)
                             }
-                        }
+                            Text("\(recovery_key[0])").frame(width: 180, height: 50).background(Color.gray).foregroundColor(Color.white).font(.title).fontWeight(.black).cornerRadius(20)
+                            Text("\(recovery_key[1])").frame(width: 180, height: 50).background(Color.gray).foregroundColor(Color.white).font(.title).fontWeight(.black).cornerRadius(20)
+                            Text("\(recovery_key[2])").frame(width: 180, height: 50).background(Color.gray).foregroundColor(Color.white).font(.title).fontWeight(.black).cornerRadius(20)
+                            
+                            Button(action: {
+                                recovery_key.removeAll()
+                                for _ in 0..<3 {
+                                    let randomWord = words.randomElement() ?? ""
+                                    recovery_key.append(randomWord)
+                                }
+                            }){
+                                Text("シャッフル")
+                                    .font(.title2)
+                                    .fontWeight(.black)
+                            }
+                            .padding()
+                            .accentColor(Color.white)
+                            .background(Color.blue)
+                            .cornerRadius(26)
+                            .frame(width: 150, height: 50)
+                        }.frame(width: 200, height: 400).background(Color.black).cornerRadius(50)
                     }
                     VStack{
                         Text("名前を変更").font(.title2).fontWeight(.black)
@@ -163,19 +162,6 @@ struct my_profile_View: View {
             }, message: {
                 Text("名前を変更するならタップして入力をして下さい")
             })
-            .alert("忘れ物や無くしたものをリストに増やす", isPresented: $add_lost_item_list_alert, actions: {
-                TextField("タップして入力", text: $userInput)
-                Button("増やす", action: {
-                    lost_item_list.append(userInput)
-                })
-                Button("キャンセル", role: .cancel, action: {})
-            }, message: {
-                Text("名前を変更するならタップして入力をして下さい")
-            })
-    }
-    // 行削除処理
-    func rowRemove(offsets: IndexSet) {
-        lost_item_list.remove(atOffsets: offsets)
     }
 }
 

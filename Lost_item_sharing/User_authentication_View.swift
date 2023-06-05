@@ -55,7 +55,7 @@ struct User_authentication_View: View {
                         error_alert = true
                     }
                     else if name_enter != my_name_main{
-                        error_message = "名前を入力して下さい"
+                        error_message = "名前が間違っています"
                         error_alert = true
                     }
                     else{
