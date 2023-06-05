@@ -81,6 +81,7 @@ struct my_profile_View: View {
                                     let randomWord = words.randomElement() ?? ""
                                     recovery_key.append(randomWord)
                                 }
+                                UserDefaults.standard.set(recovery_key, forKey: "recovery_key")
                             }){
                                 Text("シャッフル")
                                     .font(.title2)

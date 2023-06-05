@@ -17,6 +17,10 @@ struct User_authentication_View: View {
     //erroralert
     @State private var error_alert = false
     @State private var error_message = ""
+    //回復key_arelt
+    @State private var recovery_key_enter_alert = false
+    @State private var alert_message = ""
+    @State private var recovery_key_enter = ""
     
     var body: some View {
         ZStack{
@@ -70,6 +74,17 @@ struct User_authentication_View: View {
                 .accentColor(Color.white)
                 .background(Color.blue)
                 .cornerRadius(26)
+                
+                Button(action: {
+                    recovery_key_enter_alert = true
+                }) {
+                    Text("パスワードを忘れた").font(.largeTitle).fontWeight(.black)
+                }
+                .frame(width: 300, height: 30)
+                .padding()
+                .accentColor(Color.white)
+                .background(Color.blue)
+                .cornerRadius(26)
             }
         }
         .alert(isPresented: $error_alert) {
@@ -82,5 +97,21 @@ struct User_authentication_View: View {
                 }
             }
         }
+        .alert("回復キーを入力", isPresented: $recovery_key_enter_alert, actions: {
+            TextField("タップして入力", text: $recovery_key_enter)
+            Button("変える", action: {
+                let get_recovery_key = UserDefaults.standard.object(forKey: "recovery_key") as! [String]
+                
+                if get_recovery_key.contains(recovery_key_enter){
+                    print("一致するものがある")
+                }
+                else{
+                    print("一致しない")
+                }
+            })
+            Button("キャンセル", role: .cancel, action: {})
+        }, message: {
+            Text("パスワードを忘れた場合は回復キーを入力して下さい")
+        })
     }
 }
