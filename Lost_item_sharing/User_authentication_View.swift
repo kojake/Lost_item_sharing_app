@@ -21,6 +21,8 @@ struct User_authentication_View: View {
     @State private var recovery_key_enter_alert = false
     @State private var alert_message = ""
     @State private var recovery_key_enter = ""
+    //名前変更
+    @State private var showSHouldname_change_VIew = false
     
     var body: some View {
         ZStack{
@@ -74,11 +76,10 @@ struct User_authentication_View: View {
                 .accentColor(Color.white)
                 .background(Color.blue)
                 .cornerRadius(26)
-                
                 Button(action: {
                     recovery_key_enter_alert = true
                 }) {
-                    Text("パスワードを忘れた").font(.largeTitle).fontWeight(.black)
+                    Text("名前を忘れた").font(.largeTitle).fontWeight(.black)
                 }
                 .frame(width: 300, height: 30)
                 .padding()
@@ -103,7 +104,7 @@ struct User_authentication_View: View {
                 let get_recovery_key = UserDefaults.standard.object(forKey: "recovery_key") as! [String]
                 
                 if get_recovery_key.contains(recovery_key_enter){
-                    print("一致するものがある")
+                    showSHouldname_change_VIew = true
                 }
                 else{
                     print("一致しない")
@@ -111,7 +112,10 @@ struct User_authentication_View: View {
             })
             Button("キャンセル", role: .cancel, action: {})
         }, message: {
-            Text("パスワードを忘れた場合は回復キーを入力して下さい")
+            Text("名前を忘れた場合は回復キーを入力して下さい")
         })
+        .sheet(isPresented: $showSHouldname_change_VIew) {
+            name_change_View(my_name_main: $my_name_main)
+         }
     }
 }
