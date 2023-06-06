@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9707CD6E2A24836100BD5947 /* post_VIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9707CD6D2A24836100BD5947 /* post_VIew.swift */; };
 		9734DE192A2EAE22009919AE /* name_change_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9734DE182A2EAE22009919AE /* name_change_View.swift */; };
+		974C6A032A2EFEEE0068B9B2 /* first_recovery_key_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974C6A022A2EFEEE0068B9B2 /* first_recovery_key_View.swift */; };
 		974DC7152A24D1D300B22979 /* content_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974DC7142A24D1D300B22979 /* content_View.swift */; };
 		976EEFA52A2717730017709E /* tag_change_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976EEFA42A2717730017709E /* tag_change_View.swift */; };
 		9790076D2A2DB7DC009F3470 /* User_authentication_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790076C2A2DB7DC009F3470 /* User_authentication_View.swift */; };
@@ -50,6 +51,7 @@
 /* Begin PBXFileReference section */
 		9707CD6D2A24836100BD5947 /* post_VIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = post_VIew.swift; sourceTree = "<group>"; };
 		9734DE182A2EAE22009919AE /* name_change_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = name_change_View.swift; sourceTree = "<group>"; };
+		974C6A022A2EFEEE0068B9B2 /* first_recovery_key_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = first_recovery_key_View.swift; sourceTree = "<group>"; };
 		974DC7142A24D1D300B22979 /* content_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = content_View.swift; sourceTree = "<group>"; };
 		976EEFA42A2717730017709E /* tag_change_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tag_change_View.swift; sourceTree = "<group>"; };
 		9790076C2A2DB7DC009F3470 /* User_authentication_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User_authentication_View.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				97B6D4E72A23A3CC00DB4196 /* my_profile_View.swift */,
 				976EEFA42A2717730017709E /* tag_change_View.swift */,
 				97D8175E2A2B517800843096 /* first_View.swift */,
+				974C6A022A2EFEEE0068B9B2 /* first_recovery_key_View.swift */,
 				9790076C2A2DB7DC009F3470 /* User_authentication_View.swift */,
 				9734DE182A2EAE22009919AE /* name_change_View.swift */,
 				97B6D4DD2A239D6200DB4196 /* Assets.xcassets */,
@@ -249,6 +252,7 @@
 				9790076D2A2DB7DC009F3470 /* User_authentication_View.swift in Sources */,
 				97B6D4DC2A239D6100DB4196 /* ContentView.swift in Sources */,
 				9734DE192A2EAE22009919AE /* name_change_View.swift in Sources */,
+				974C6A032A2EFEEE0068B9B2 /* first_recovery_key_View.swift in Sources */,
 				97D8175F2A2B517800843096 /* first_View.swift in Sources */,
 				9707CD6E2A24836100BD5947 /* post_VIew.swift in Sources */,
 				97B6D4DA2A239D6100DB4196 /* Lost_item_sharingApp.swift in Sources */,
