@@ -22,6 +22,10 @@ struct first_View: View {
     //erroralert
     @State private var error_alert = false
     @State var error_message = ""
+    //回復キーalert
+    @State private var recovery_key_alert = false
+    @State private var recovery_key: [String] = ["","",""]
+    let words = ["apple", "banana", "cat", "dog", "elephant", "fox", "giraffe", "horse", "igloo", "jaguar"]
     
     var body: some View {
         ZStack{
@@ -94,8 +98,16 @@ struct first_View: View {
                         lost_tag_list.append(contentsOf: [tag_1, tag_2])
                         post_tag.append(contentsOf: [tag_1, tag_2])
                         UserDefaults.standard.set(lost_tag_list, forKey: "lost_tag_list_key")
-                        //登録完了したので画面を閉じる
+                        //登録完了したのでこの画面は閉じる
                         dismiss()
+                        //回復キーalert
+                        recovery_key_alert = true
+                        recovery_key.removeAll()
+                        for _ in 0..<3 {
+                            let randomWord = words.randomElement() ?? ""
+                            recovery_key.append(randomWord)
+                        }
+                        UserDefaults.standard.set(recovery_key, forKey: "recovery_key")
                     }
                 }) {
                     Text("登録").font(.largeTitle).fontWeight(.black)
@@ -110,6 +122,9 @@ struct first_View: View {
         .alert(isPresented: $error_alert) {
             Alert(title: Text("エラー"),message: Text("\(error_message)"))
         }
+        .alert(isPresented: $recovery_key_alert) {
+            Alert(title: Text("回復キー"),message: Text("ユーザ認証をする時に名前を聞きます\nその名前を忘れた時にこの回復キーを入力しないといけません。\n忘れてしまうとアプリを初期化しないといけません。\n回復キー一覧\n\(recovery_key[0])\n\(recovery_key[1])\n\(recovery_key[2])"))
+        }
         .toolbar {
             ToolbarItem(placement: .keyboard) {
                 Button("閉じる") {
@@ -119,3 +134,4 @@ struct first_View: View {
         }
     }
 }
+

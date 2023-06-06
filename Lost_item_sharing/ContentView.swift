@@ -162,6 +162,7 @@ struct ContentView: View {
          }
         .onAppear{
             //初回表示
+            first_View_whether_to_display = true
             if let value = UserDefaults.standard.object(forKey: "isFirstTime_key") as? Int {
                 isFirstTime = value
             }
@@ -184,9 +185,9 @@ struct ContentView: View {
                 lost_tag_list = []
             }
             //ユーザ認証
-            if isFirstTime == 1{
-                User_authentication_View = true
-            }
+//            if isFirstTime == 1{
+//                User_authentication_View = true
+//            }
         }
     }
 }
