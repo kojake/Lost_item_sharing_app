@@ -98,8 +98,6 @@ struct first_View: View {
                         lost_tag_list.append(contentsOf: [tag_1, tag_2])
                         post_tag.append(contentsOf: [tag_1, tag_2])
                         UserDefaults.standard.set(lost_tag_list, forKey: "lost_tag_list_key")
-                        //登録完了したのでこの画面は閉じる
-                        dismiss()
                         //回復キーalert
                         recovery_key_alert = true
                         recovery_key.removeAll()
@@ -123,7 +121,10 @@ struct first_View: View {
             Alert(title: Text("エラー"),message: Text("\(error_message)"))
         }
         .alert(isPresented: $recovery_key_alert) {
-            Alert(title: Text("回復キー"),message: Text("ユーザ認証をする時に名前を聞きます\nその名前を忘れた時にこの回復キーを入力しないといけません。\n忘れてしまうとアプリを初期化しないといけません。\n回復キー一覧\n\(recovery_key[0])\n\(recovery_key[1])\n\(recovery_key[2])"))
+            Alert(title: Text("回復キー"),
+                  message: Text("ユーザ認証をする時に名前を聞きます\nその名前を忘れた時にこの回復キーを入力しないといけません。\n忘れてしまうとアプリを初期化しないといけません。\n回復キー一覧\n\(recovery_key[0])\n\(recovery_key[1])\n\(recovery_key[2])"),
+                  dismissButton: .default(Text("OK"),
+                                          action: {dismiss()}))
         }
         .toolbar {
             ToolbarItem(placement: .keyboard) {
